@@ -1,0 +1,44 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      ui:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@radix-ui/*"
+          - "wouter"
+          - "tailwind-merge"
+          - "lucide-react"
+          - "class-variance-authority"
+          - "clsx"
+        update-types:
+          - "minor"
+          - "patch"
+      tooling:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+          - "vitest"
+          - "@tailwindcss/*"
+          - "tailwindcss"
+          - "tw-animate-css"
+          - "prettier"
+          - "@types/*"
+        update-types:
+          - "minor"
+          - "patch"

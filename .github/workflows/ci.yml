@@ -4,10 +4,10 @@ name: RubberDB CI
 on:
   push:
     branches:
-      - RubberDB
+      - main
   pull_request:
     branches:
-      - RubberDB
+      - main
   workflow_dispatch:
 
 permissions:
@@ -46,7 +46,7 @@ jobs:
         run: pnpm audit --audit-level high --prod
 
       - name: Build (GitHub Pages base)
-        run: pnpm exec vite build --base /Web/rubber/
+        run: pnpm exec vite build --base /rubberdb/
 
       - name: Validate build artifact
-        run: node scripts/verify-build-artifact.mjs dist/public --base /Web/rubber/
+        run: node scripts/verify-build-artifact.mjs dist/public --base /rubberdb/

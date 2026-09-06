@@ -3,7 +3,7 @@
  * 本番成果物の検査（修正設計書 CI-01）。
  * build が成功しただけでは本番として正しいとは限らないため、配布物そのものを検査する。
  *
- *   node scripts/verify-build-artifact.mjs <dist-dir> [--base /Web/rubber/] [--max-js-kb 400] [--max-css-kb 60]
+ *   node scripts/verify-build-artifact.mjs <dist-dir> [--base /rubberdb/] [--max-js-kb 400] [--max-css-kb 60]
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -17,7 +17,7 @@ function option(name, fallback) {
   return index === -1 ? fallback : args[index + 1];
 }
 
-const expectedBase = option("base", "/Web/rubber/");
+const expectedBase = option("base", "/rubberdb/");
 const maxJsKb = Number(option("max-js-kb", "400"));
 const maxCssKb = Number(option("max-css-kb", "60"));
 

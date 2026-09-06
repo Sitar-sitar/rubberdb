@@ -4,7 +4,7 @@ import path from "node:path";
 import { defineConfig, type Plugin } from "vite";
 
 // GitHub Actions 上では GitHub Pages のサブパスを既定にする。
-// CI は `vite build --base /Web/rubber/` で明示指定するため、CLI 指定が優先される。
+// CI は `vite build --base /rubberdb/` で明示指定するため、CLI 指定が優先される。
 const IS_GITHUB_PAGES = process.env.GITHUB_ACTIONS === "true";
 
 // 本番 HTML にだけ CSP を付与する。dev サーバーは Vite が HMR 用の
@@ -41,7 +41,7 @@ function vitePluginProductionCsp(): Plugin {
 }
 
 export default defineConfig({
-  base: IS_GITHUB_PAGES ? "/Web/" : "/",
+  base: IS_GITHUB_PAGES ? "/rubberdb/" : "/",
   plugins: [react(), tailwindcss(), vitePluginProductionCsp()],
   resolve: {
     alias: {
