@@ -1,0 +1,51 @@
+import type { RubberEntry } from "@/types/rubber";
+
+const rubbers: RubberEntry[] = [
+  {
+    id: "rasanter-r45",
+    name: "ラザンター R45",
+    type: "裏ソフト",
+    price: 8360,
+    hardness: "中",
+    speed: 4,
+    spin: 5,
+    control: 5,
+    styles: ["spin", "control"],
+    suitableFor: "高い回転と安定性を扱いやすい硬度で求める人",
+    source: "https://andro.jp/?item=rasanter-r45",
+    officialNote: "エナジー・セル／硬度45°",
+    verifiedAt: "2026-08-17",
+  },
+  {
+    id: "rasanter-r48",
+    name: "ラザンター R48",
+    type: "裏ソフト",
+    price: 8360,
+    hardness: "中硬",
+    speed: 5,
+    spin: 5,
+    control: 4,
+    styles: ["spin", "counter"],
+    suitableFor: "パワードライブと安定感を両立したい人",
+    source: "https://andro.jp/?item=rasanter-r48",
+    officialNote: "エナジー・セル／硬度48°",
+    verifiedAt: "2026-08-17",
+  },
+  {
+    id: "rasanter-r53",
+    name: "ラザンター R53",
+    type: "裏ソフト",
+    price: 8360,
+    hardness: "硬",
+    speed: 5,
+    spin: 5,
+    control: 3,
+    styles: ["spin", "counter"],
+    suitableFor: "硬めのスポンジで最大限の加速と回転を求める人",
+    source: "https://andro.jp/?item=rasanter-r53",
+    officialNote: "エナジー・セル／硬度53°",
+    verifiedAt: "2026-08-17",
+  },
+];
+
+export default rubbers;
