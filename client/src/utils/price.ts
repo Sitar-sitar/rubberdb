@@ -29,6 +29,12 @@ export function calcSetPrice(items: PricedItem[]): SetPrice {
   };
 }
 
+/** 製品 1 枚の価格表記。`null` はオープン価格（修正設計書 2026-10-01 M-02）。 */
+export function formatPriceLabel(price: number | null): string {
+  if (price === null) return "オープン価格";
+  return `${price.toLocaleString("ja-JP")}円（税込）`;
+}
+
 export function formatYen(value: number): string {
   return `¥${value.toLocaleString("ja-JP")}`;
 }

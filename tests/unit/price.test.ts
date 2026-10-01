@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   calcSetPrice,
+  formatPriceLabel,
   formatYen,
   setPriceHeadline,
   setPriceNote,
@@ -53,5 +54,16 @@ describe("表示文言", () => {
 
   it("金額は日本語ロケールで整形する", () => {
     expect(formatYen(12100)).toBe("¥12,100");
+  });
+});
+
+describe("formatPriceLabel", () => {
+  it("価格は税込表記にする", () => {
+    expect(formatPriceLabel(4290)).toBe("4,290円（税込）");
+    expect(formatPriceLabel(12100)).toBe("12,100円（税込）");
+  });
+
+  it("null はオープン価格と表記する", () => {
+    expect(formatPriceLabel(null)).toBe("オープン価格");
   });
 });

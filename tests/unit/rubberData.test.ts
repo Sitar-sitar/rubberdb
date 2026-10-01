@@ -61,19 +61,6 @@ describe("ラバーデータの整合性", () => {
     }
   });
 
-  it("priceLabel と price が矛盾しない", () => {
-    for (const rubber of rubbers) {
-      if (rubber.price === null) {
-        expect(rubber.priceLabel, rubber.id).toContain("オープン価格");
-      } else {
-        expect(rubber.priceLabel, rubber.id).toContain(
-          rubber.price.toLocaleString("ja-JP")
-        );
-        expect(rubber.priceLabel, rubber.id).not.toContain("オープン価格");
-      }
-    }
-  });
-
   it("source は許可済みメーカードメインの https URL", () => {
     for (const rubber of rubbers) {
       const url = new URL(rubber.source);
