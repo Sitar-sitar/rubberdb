@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { rubbers } from "@/lib/rubberData";
-import {
-  BUDGET_VALUES,
-  LEVEL_VALUES,
-  ROLE_VALUES,
-} from "@/types/favorites";
+import { BUDGET_VALUES, LEVEL_VALUES, ROLE_VALUES } from "@/types/favorites";
 import { suggestSet } from "@/utils/recommend";
 
 /**
