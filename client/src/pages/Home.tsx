@@ -39,58 +39,28 @@ import type {
   SavedSet,
 } from "@/types/favorites";
 import { calcSetPrice, setPriceHeadline, setPriceNote } from "@/utils/price";
+import {
+  pruneFavorites,
+  resolveDisplayedSet,
+  type PinnedSet,
+} from "@/utils/favorites";
 import { suggestSet } from "@/utils/recommend";
+import {
+  backOptions,
+  foreOptions,
+  roleLabel,
+  type RoleOption,
+} from "@/utils/roles";
 
-const foreOptions: Array<{
-  id: Role;
-  number: string;
-  label: string;
-  detail: string;
-}> = [
-  {
-    id: "spin",
-    number: "01",
-    label: "回転ドライブ",
-    detail: "弧線を作って攻めたい",
-  },
-  {
-    id: "counter",
-    number: "02",
-    label: "早い攻撃",
-    detail: "早い打点で押し返したい",
-  },
-  {
-    id: "control",
-    number: "03",
-    label: "安定してつなぐ",
-    detail: "ミスを減らして組み立てたい",
-  },
-];
-const backOptions: Array<{
-  id: Role;
-  number: string;
-  label: string;
-  detail: string;
-}> = [
-  {
-    id: "control",
-    number: "01",
-    label: "安定ブロック",
-    detail: "台上とブロックを安定させたい",
-  },
-  {
-    id: "counter",
-    number: "02",
-    label: "早い攻撃",
-    detail: "バックでも早く攻めたい",
-  },
-  {
-    id: "spin",
-    number: "03",
-    label: "回転でつなぐ",
-    detail: "両ハンドでドライブしたい",
-  },
-];
+const catalogIds = new Set(rubbers.map(rubber => rubber.id));
+/** カタログに無い ID を指す保存データは読み込み時に取り除く（修正設計書 2026-10-01 BUG-03）。 */
+function loadPrunedFavorites() {
+  return pruneFavorites(
+    loadFavoriteRubberIds(),
+    loadFavoriteSets(),
+    catalogIds
+  );
+}
 
 const datasetVerifiedAt = rubbers.reduce(
   (latest, rubber) => (rubber.verifiedAt > latest ? rubber.verifiedAt : latest),
@@ -98,12 +68,6 @@ const datasetVerifiedAt = rubbers.reduce(
 );
 function verifiedLabel(verifiedAt: string) {
   return verifiedAt.replaceAll("-", ".");
-}
-function roleLabel(role: Role) {
-  return (
-    [...foreOptions, ...backOptions].find(option => option.id === role)
-      ?.label ?? "安定してつなぐ"
-  );
 }
 function MiniMeter({ value, label }: { value: number; label: string }) {
   return (
@@ -137,10 +101,12 @@ export default function Home() {
     role: string;
   } | null>(null);
   const [favoriteRubberIds, setFavoriteRubberIds] = useState<string[]>(
-    loadFavoriteRubberIds
+    () => loadPrunedFavorites().rubberIds
   );
-  const [favoriteSets, setFavoriteSets] =
-    useState<SavedSet[]>(loadFavoriteSets);
+  const [pinnedSet, setPinnedSet] = useState<PinnedSet | null>(null);
+  const [favoriteSets, setFavoriteSets] = useState<SavedSet[]>(
+    () => loadPrunedFavorites().sets
+  );
   const [catalogQuery, setCatalogQuery] = useState("");
   const [catalogType, setCatalogType] = useState<RubberType | "すべて">(
     "すべて"
@@ -188,7 +154,15 @@ export default function Home() {
     () => suggestSet(rubbers, { foreRole, backRole, level, budget }),
     [backRole, budget, foreRole, level]
   );
-  const { fore, back, foreList, backList } = suggestion;
+  const { foreList, backList } = suggestion;
+  // 保存セットの再確認中は、現在の提案ではなく保存時の 2 枚を表示する（BUG-02）。
+  const { fore, back, pinned } = useMemo(
+    () => resolveDisplayedSet(suggestion, pinnedSet, rubbers),
+    [pinnedSet, suggestion]
+  );
+  const pinnedDiffersFromSuggestion =
+    pinned &&
+    (fore.id !== suggestion.fore.id || back.id !== suggestion.back.id);
   const setPrice = useMemo(() => calcSetPrice([fore, back]), [back, fore]);
   const handText =
     handedness === "right"
@@ -212,6 +186,7 @@ export default function Home() {
     setLevel("beginner");
     setBudget("standard");
     setShowAlternatives(false);
+    setPinnedSet(null);
   };
   const toggleFavoriteRubber = (id: string) =>
     setFavoriteRubberIds(current =>
@@ -245,6 +220,7 @@ export default function Home() {
     setLevel(saved.level);
     setBudget(saved.budget);
     setShowAlternatives(false);
+    setPinnedSet({ foreId: saved.foreId, backId: saved.backId });
     window.setTimeout(
       () =>
         document
@@ -435,6 +411,7 @@ export default function Home() {
                 onChange={value => {
                   setForeRole(value);
                   setShowAlternatives(false);
+                  setPinnedSet(null);
                 }}
               />
             </QuestionPanel>
@@ -449,6 +426,7 @@ export default function Home() {
                 onChange={value => {
                   setBackRole(value);
                   setShowAlternatives(false);
+                  setPinnedSet(null);
                 }}
               />
             </QuestionPanel>
@@ -457,12 +435,18 @@ export default function Home() {
             <ChoiceGroup label="卓球の経験">
               <ChoiceButton
                 active={level === "beginner"}
-                onClick={() => setLevel("beginner")}
+                onClick={() => {
+                  setLevel("beginner");
+                  setPinnedSet(null);
+                }}
                 title="はじめて〜基礎練習中"
               />
               <ChoiceButton
                 active={level === "middle"}
-                onClick={() => setLevel("middle")}
+                onClick={() => {
+                  setLevel("middle");
+                  setPinnedSet(null);
+                }}
                 title="試合に少し慣れてきた"
               />
             </ChoiceGroup>
@@ -472,17 +456,26 @@ export default function Home() {
             >
               <ChoiceButton
                 active={budget === "easy"}
-                onClick={() => setBudget("easy")}
+                onClick={() => {
+                  setBudget("easy");
+                  setPinnedSet(null);
+                }}
                 title="6,000円まで"
               />
               <ChoiceButton
                 active={budget === "standard"}
-                onClick={() => setBudget("standard")}
+                onClick={() => {
+                  setBudget("standard");
+                  setPinnedSet(null);
+                }}
                 title="8,000円まで"
               />
               <ChoiceButton
                 active={budget === "free"}
-                onClick={() => setBudget("free")}
+                onClick={() => {
+                  setBudget("free");
+                  setPinnedSet(null);
+                }}
                 title="こだわらない"
               />
             </ChoiceGroup>
@@ -513,14 +506,26 @@ export default function Home() {
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-[#586d82]">
                   フォアは{" "}
                   <strong className="text-[#082a59]">
-                    {roleLabel(foreRole)}
+                    {roleLabel("fore", foreRole)}
                   </strong>
                   、バックは{" "}
                   <strong className="text-[#082a59]">
-                    {roleLabel(backRole)}
+                    {roleLabel("back", backRole)}
                   </strong>{" "}
                   を優先した組み合わせです。{handText}
                 </p>
+                {pinnedDiffersFromSuggestion && (
+                  <p className="mt-4 max-w-2xl border-l-4 border-[#1768db] bg-white px-4 py-3 text-xs font-bold leading-6 text-[#365c82]">
+                    保存したときの組み合わせを表示しています。現在のデータでは提案が変わっています。{" "}
+                    <button
+                      onClick={() => setPinnedSet(null)}
+                      className="text-[#1768db] underline underline-offset-4"
+                      type="button"
+                    >
+                      現在の提案を見る
+                    </button>
+                  </p>
+                )}
               </div>
               <div className="border-l-4 border-[#c7fa42] bg-white p-5">
                 <p className="font-mono text-[10px] font-black tracking-[.12em] text-[#365c82]">
@@ -563,7 +568,7 @@ export default function Home() {
               <div className="grid lg:grid-cols-[1fr_64px_1fr]">
                 <SetCard
                   side="FOREHAND"
-                  role={roleLabel(foreRole)}
+                  role={roleLabel("fore", foreRole)}
                   rubber={fore}
                   reason={
                     foreRole === "spin"
@@ -576,7 +581,7 @@ export default function Home() {
                     setDetail({
                       rubber: fore,
                       side: "FOREHAND",
-                      role: roleLabel(foreRole),
+                      role: roleLabel("fore", foreRole),
                     })
                   }
                 />
@@ -588,7 +593,7 @@ export default function Home() {
                 <div className="border-t border-white/15 lg:border-l lg:border-t-0">
                   <SetCard
                     side="BACKHAND"
-                    role={roleLabel(backRole)}
+                    role={roleLabel("back", backRole)}
                     rubber={back}
                     reason={
                       backRole === "control"
@@ -601,7 +606,7 @@ export default function Home() {
                       setDetail({
                         rubber: back,
                         side: "BACKHAND",
-                        role: roleLabel(backRole),
+                        role: roleLabel("back", backRole),
                       })
                     }
                   />
@@ -633,12 +638,12 @@ export default function Home() {
                   title="フォアの候補"
                   list={foreList.slice(1, 4)}
                   side="FOREHAND"
-                  role={roleLabel(foreRole)}
+                  role={roleLabel("fore", foreRole)}
                   onInspect={rubber =>
                     setDetail({
                       rubber,
                       side: "FOREHAND",
-                      role: roleLabel(foreRole),
+                      role: roleLabel("fore", foreRole),
                     })
                   }
                 />
@@ -646,12 +651,12 @@ export default function Home() {
                   title="バックの候補"
                   list={backList.slice(1, 4)}
                   side="BACKHAND"
-                  role={roleLabel(backRole)}
+                  role={roleLabel("back", backRole)}
                   onInspect={rubber =>
                     setDetail({
                       rubber,
                       side: "BACKHAND",
-                      role: roleLabel(backRole),
+                      role: roleLabel("back", backRole),
                     })
                   }
                 />
@@ -1023,7 +1028,7 @@ export default function Home() {
               OFFICIAL SOURCES
             </p>
             <div className="mt-3 flex max-w-xl flex-wrap gap-x-4 gap-y-2">
-              {sources.slice(0, 6).map(source => (
+              {sources.map(source => (
                 <a
                   className="text-[10px] font-bold text-white hover:text-[#c7fa42]"
                   href={source.url}
@@ -1103,7 +1108,7 @@ function RoleGrid({
   value,
   onChange,
 }: {
-  options: Array<{ id: Role; number: string; label: string; detail: string }>;
+  options: RoleOption[];
   value: Role;
   onChange: (value: Role) => void;
 }) {
@@ -1545,8 +1550,8 @@ function FavoriteSets({
                     {back.name}
                   </p>
                   <p className="mt-1 text-[10px] text-[#68788a]">
-                    フォア：{roleLabel(item.foreRole)} / バック：
-                    {roleLabel(item.backRole)}
+                    フォア：{roleLabel("fore", item.foreRole)} / バック：
+                    {roleLabel("back", item.backRole)}
                   </p>
                 </div>
                 <button

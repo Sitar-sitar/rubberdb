@@ -115,7 +115,16 @@ if (!fs.existsSync(indexPath)) {
   }
 }
 
-// 4. バンドルサイズ
+// 4. CSS が参照する keyframes の定義漏れ（修正設計書 2026-10-01 BUG-05）
+const allCss = files
+  .filter(file => file.endsWith(".css"))
+  .map(file => fs.readFileSync(file, "utf8"))
+  .join("\n");
+if (/animation:[^;}]*slideIn/.test(allCss) && !/@keyframes\s+slideIn/.test(allCss)) {
+  fail("CSS が slideIn アニメーションを参照していますが、@keyframes slideIn がありません");
+}
+
+// 5. バンドルサイズ
 function totalKb(extension) {
   const bytes = files
     .filter(file => file.endsWith(extension))

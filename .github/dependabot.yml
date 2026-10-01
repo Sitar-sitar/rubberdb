@@ -24,7 +24,6 @@ updates:
           - "wouter"
           - "tailwind-merge"
           - "lucide-react"
-          - "class-variance-authority"
           - "clsx"
         update-types:
           - "minor"

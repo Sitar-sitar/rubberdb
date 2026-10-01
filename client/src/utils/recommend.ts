@@ -84,6 +84,8 @@ export function suggestSet(
   const foreList = [...candidates].sort(
     (a, b) => sideScore(b, foreRole, level) - sideScore(a, foreRole, level)
   );
+  // 予算内候補が 2 件未満のときだけ catalog へフォールバックする。全予算で 2 件以上あることは
+  // tests/unit/recommend.test.ts の不変条件テストで保証する（修正設計書 2026-10-01 BUG-07）。
   const fore = foreList[0] ?? catalog[0];
   const backList = [...candidates]
     .filter(rubber => rubber.id !== fore.id)

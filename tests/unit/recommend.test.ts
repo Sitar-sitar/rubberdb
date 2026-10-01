@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { rubbers, type Rubber } from "@/lib/rubberData";
+import type { Budget } from "@/types/favorites";
 import {
+  BUDGET_LIMITS,
   beginnerPricePenalty,
   suggestSet,
   withinBudget,
@@ -69,5 +71,18 @@ describe("suggestSet", () => {
       budget: "free",
     });
     expect(suggestion.foreList).toHaveLength(rubbers.length);
+  });
+});
+
+// suggestSet は候補が足りないと予算外の catalog へフォールバックする。
+// そこへ到達しないことをデータ側の不変条件として保証する（修正設計書 2026-10-01 BUG-07）。
+describe("予算と候補数の不変条件", () => {
+  it("全予算で予算内の候補が 2 件以上ある", () => {
+    for (const budget of Object.keys(BUDGET_LIMITS) as Budget[]) {
+      const count = rubbers.filter(rubber =>
+        withinBudget(rubber, budget)
+      ).length;
+      expect(count, budget).toBeGreaterThanOrEqual(2);
+    }
   });
 });
