@@ -37,20 +37,20 @@ class ErrorBoundary extends Component<Props, State> {
           <div className="flex flex-col items-center w-full max-w-2xl p-8">
             <AlertTriangle
               size={48}
-              className="text-destructive mb-6 flex-shrink-0"
+              className="text-[#d54a3e] mb-6 flex-shrink-0"
             />
 
             <h2 className="text-xl mb-4">
               画面の表示中に問題が発生しました。
             </h2>
 
-            <p className="mb-6 text-sm text-muted-foreground">
+            <p className="mb-6 text-sm text-[#68788a]">
               ページを再読み込みしてもう一度お試しください。
             </p>
 
             {IS_DEV && (
-              <div className="p-4 w-full rounded bg-muted overflow-auto mb-6">
-                <pre className="text-sm text-muted-foreground whitespace-break-spaces">
+              <div className="p-4 w-full rounded bg-[#edf4fa] overflow-auto mb-6">
+                <pre className="text-sm text-[#68788a] whitespace-break-spaces">
                   {this.state.error?.stack}
                 </pre>
               </div>

@@ -7,3 +7,5 @@
 :root { --background:oklch(.98 .005 100); --foreground:oklch(.23 .04 252); --primary:oklch(.31 .08 250); --primary-foreground:oklch(1 0 0); --border:oklch(.88 .014 245); --input:oklch(.88 .014 245); --ring:oklch(.78 .19 125); }
 @layer base { * { @apply border-border outline-ring/50; } html{scroll-behavior:smooth} body { @apply bg-background text-foreground font-sans; } button:not(:disabled),a[href],select:not(:disabled),input { @apply cursor-pointer; } }
 @media (prefers-reduced-motion:no-preference){button:active{transform:scale(.97)}}
+/* 詳細モーダルの入場。Home.tsx の animate-[slideIn_...] が参照する（修正設計書 2026-10-01 BUG-05）。 */
+@keyframes slideIn { from { transform:translateX(24px); opacity:0 } to { transform:none; opacity:1 } }
