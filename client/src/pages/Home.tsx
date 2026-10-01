@@ -24,7 +24,7 @@ import {
   type Rubber,
   type RubberType,
 } from "@/lib/rubberData";
-import { brandTint } from "@/utils/brandTint";
+import { brandTint } from "@/lib/brands";
 import {
   loadFavoriteRubberIds,
   loadFavoriteSets,
@@ -38,7 +38,12 @@ import type {
   Role,
   SavedSet,
 } from "@/types/favorites";
-import { calcSetPrice, setPriceHeadline, setPriceNote } from "@/utils/price";
+import {
+  calcSetPrice,
+  formatPriceLabel,
+  setPriceHeadline,
+  setPriceNote,
+} from "@/utils/price";
 import {
   pruneFavorites,
   resolveDisplayedSet,
@@ -1216,7 +1221,7 @@ function SetCard({
         <div className="mt-2 flex items-end justify-between gap-3">
           <div>
             <p className="text-sm font-black text-[#c7fa42]">
-              {rubber.priceLabel}
+              {formatPriceLabel(rubber.price)}
             </p>
             <p className="mt-1 text-xs font-bold text-white">
               {rubber.hardness} / {rubber.type}
@@ -1267,7 +1272,7 @@ function AlternativeList({
               </p>
               <p className="mt-1 text-sm font-black">{rubber.name}</p>
               <p className="mt-1 text-[10px] text-[#68788a]">
-                {rubber.priceLabel} / {rubber.hardness}
+                {formatPriceLabel(rubber.price)} / {rubber.hardness}
               </p>
             </div>
             <button
@@ -1304,7 +1309,7 @@ function GuideRubberCard({
       </p>
       <p className="mt-2 text-sm font-black text-white">{rubber.name}</p>
       <p className="mt-1 text-[10px] text-[#c8d9e9]">
-        {rubber.priceLabel} / {rubber.hardness}
+        {formatPriceLabel(rubber.price)} / {rubber.hardness}
       </p>
       <span className="mt-3 inline-flex items-center gap-1 text-[10px] font-black text-[#c7fa42]">
         詳細を確認 <ChevronRight size={13} />
@@ -1350,7 +1355,9 @@ function CatalogCard({
           <p className="font-mono text-[9px] font-black tracking-[.08em] text-[#708293]">
             REFERENCE PRICE
           </p>
-          <p className="mt-1 text-xs font-black">{rubber.priceLabel}</p>
+          <p className="mt-1 text-xs font-black">
+            {formatPriceLabel(rubber.price)}
+          </p>
         </div>
         <p className="text-[10px] font-bold text-[#1768db]">詳細を見る</p>
       </div>
@@ -1383,7 +1390,7 @@ function RubberDetailModal({
       : (document.activeElement as HTMLElement | null)
   );
   const detailRows: Array<[string, string]> = [
-    ["参考価格", rubber.priceLabel],
+    ["参考価格", formatPriceLabel(rubber.price)],
     ["硬度", rubber.hardness],
     ["ラバー種別", rubber.type],
     ["公式情報の確認日", verifiedLabel(rubber.verifiedAt)],
@@ -1610,7 +1617,8 @@ function FavoriteRubbers({
               </span>
               <p className="mt-2 text-sm font-black">{rubber.name}</p>
               <p className="mt-1 text-[10px] text-[#68788a]">
-                {rubber.priceLabel} / {rubber.hardness} / {rubber.type}
+                {formatPriceLabel(rubber.price)} / {rubber.hardness} /{" "}
+                {rubber.type}
               </p>
             </div>
             <div className="flex shrink-0 items-center gap-3">

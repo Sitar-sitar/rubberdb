@@ -10,7 +10,6 @@ function rubber(id: string): Rubber {
     name: id,
     type: "裏ソフト",
     price: 5000,
-    priceLabel: "5,000円（税込）",
     hardness: "中",
     speed: 3,
     spin: 3,
