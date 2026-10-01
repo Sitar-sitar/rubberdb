@@ -24,7 +24,7 @@ import {
   type Rubber,
   type RubberType,
 } from "@/lib/rubberData";
-import { brandTint } from "@/utils/brandTint";
+import { brandTint } from "@/lib/brands";
 import {
   loadFavoriteRubberIds,
   loadFavoriteSets,
@@ -1355,7 +1355,9 @@ function CatalogCard({
           <p className="font-mono text-[9px] font-black tracking-[.08em] text-[#708293]">
             REFERENCE PRICE
           </p>
-          <p className="mt-1 text-xs font-black">{formatPriceLabel(rubber.price)}</p>
+          <p className="mt-1 text-xs font-black">
+            {formatPriceLabel(rubber.price)}
+          </p>
         </div>
         <p className="text-[10px] font-bold text-[#1768db]">詳細を見る</p>
       </div>
@@ -1615,7 +1617,8 @@ function FavoriteRubbers({
               </span>
               <p className="mt-2 text-sm font-black">{rubber.name}</p>
               <p className="mt-1 text-[10px] text-[#68788a]">
-                {formatPriceLabel(rubber.price)} / {rubber.hardness} / {rubber.type}
+                {formatPriceLabel(rubber.price)} / {rubber.hardness} /{" "}
+                {rubber.type}
               </p>
             </div>
             <div className="flex shrink-0 items-center gap-3">

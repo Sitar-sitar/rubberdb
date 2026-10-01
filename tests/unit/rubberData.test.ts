@@ -5,23 +5,7 @@ import {
   sources,
   type Rubber,
 } from "@/lib/rubberData";
-import { brandTint } from "@/utils/brandTint";
-
-/** メーカー公式サイトとして許可するホスト名。 */
-const ALLOWED_SOURCE_HOSTS = new Set([
-  "www.butterfly.co.jp",
-  "www.nittaku.com",
-  "www.victas.com",
-  "www.yasakajp.com",
-  "tibhar-japan.com",
-  "m.xiom.jp",
-  "stigasports.jp",
-  "www.donic.jp",
-  "andro.jp",
-  "www.andro.de",
-  "joola.co.jp",
-  "www.juic.co.jp",
-]);
+import { allowedSourceHosts, brandTint } from "@/lib/brands";
 
 const SCORE_KEYS: Array<keyof Pick<Rubber, "speed" | "spin" | "control">> = [
   "speed",
@@ -65,7 +49,10 @@ describe("ラバーデータの整合性", () => {
     for (const rubber of rubbers) {
       const url = new URL(rubber.source);
       expect(url.protocol, rubber.id).toBe("https:");
-      expect(ALLOWED_SOURCE_HOSTS.has(url.hostname), `${rubber.id} ${url.hostname}`).toBe(true);
+      expect(
+        allowedSourceHosts.has(url.hostname),
+        `${rubber.id} ${url.hostname}`
+      ).toBe(true);
     }
   });
 
@@ -73,7 +60,10 @@ describe("ラバーデータの整合性", () => {
     for (const source of sources) {
       const url = new URL(source.url);
       expect(url.protocol, source.name).toBe("https:");
-      expect(ALLOWED_SOURCE_HOSTS.has(url.hostname), `${source.name} ${url.hostname}`).toBe(true);
+      expect(
+        allowedSourceHosts.has(url.hostname),
+        `${source.name} ${url.hostname}`
+      ).toBe(true);
     }
   });
 

@@ -5,6 +5,10 @@
  * 確認日は製品ごとに verifiedAt（YYYY-MM-DD）で保持し、画面表示もこの値を使う。
  */
 
+import type { BrandId } from "@/lib/brands";
+
+export { sources } from "@/lib/brands";
+
 export type RubberType = "裏ソフト" | "表ソフト" | "粒高" | "アンチ";
 export type PlayStyle =
   | "spin"
@@ -17,7 +21,7 @@ export type PlayStyle =
 
 export type Rubber = {
   id: string;
-  brand: "Butterfly" | "Nittaku" | "VICTAS" | "Yasaka" | "TIBHAR" | "XIOM" | "STIGA" | "DONIC" | "andro" | "JOOLA" | "JUIC";
+  brand: BrandId;
   name: string;
   type: RubberType;
   price: number | null;
@@ -278,17 +282,3 @@ export function getRecommendedRubbers(style: PlayStyle) {
     })
     .slice(0, 6);
 }
-
-export const sources = [
-  { name: "Butterfly ラバー製品情報", url: "https://www.butterfly.co.jp/products/rubber/" },
-  { name: "Nittaku 裏ソフト製品情報", url: "https://www.nittaku.com/products/rubbers/pimples-in/" },
-  { name: "VICTAS ラバー製品情報", url: "https://www.victas.com/products/?cat=3" },
-  { name: "Yasaka ラバー製品情報", url: "https://www.yasakajp.com/goods/rub/" },
-  { name: "TIBHAR JAPAN ラバー製品情報", url: "https://tibhar-japan.com/rubber/" },
-  { name: "XIOM 日本向け公式ストア", url: "https://m.xiom.jp/" },
-  { name: "STIGA ラバー製品情報", url: "https://stigasports.jp/products_cat/rubber" },
-  { name: "DONIC-JAPAN ラバーカタログ", url: "https://www.donic.jp/home/download.php?pg=Catalogue" },
-  { name: "andro ラバー製品情報", url: "https://www.andro.de/ja/raha" },
-  { name: "JOOLA JAPAN ラバー製品情報", url: "https://joola.co.jp/collections/table-tennis-rubbers-1" },
-  { name: "JUIC 粘着ラバー製品情報", url: "https://www.juic.co.jp/view/category/ct65" },
-];
