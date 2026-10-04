@@ -1,0 +1,3504 @@
+{
+  "schemaVersion": 1,
+  "products": [
+    {
+      "id": "zyre-03",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/detail/06140.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/detail/06140.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dignics-09c",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06070.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06070.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dignics-05",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06040.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06040.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dignics-80",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06050.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06050.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dignics-64",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06060.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06060.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "tenergy-05",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05800.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05800.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "tenergy-05fx",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05900.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05900.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "tenergy-80",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05930.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05930.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "tenergy-64",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05820.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05820.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "glayzer",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06100.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06100.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "glayzer-09c",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06110.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06110.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rozena",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06020.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/06020.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "roundell",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05860.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05860.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "tackiness-chop",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05450.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05450.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "sriver",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05050.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05050.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "flextra",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05210.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/05210.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "impartial-xs",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/00420.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/00420.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "speedy-po",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/00260.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/00260.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "feint-long-3",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/00320.html"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.butterfly.co.jp/products/rubber/",
+          "https://www.butterfly.co.jp/products/detail/00320.html"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "fastarc-g1",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "fastarc-c1",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-4"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-4"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "fastarc-s1",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-5"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-5"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "gennexion",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-66"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-66"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "gennexion-v2c",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-71"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-71"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "hammond-z2",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-62-2"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-62-2"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "flyatt-evo",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-74"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-74"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "blastac",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-78"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-78"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-8-80",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-72"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-72"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-neo3",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-20"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-20"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-8-80-power",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-73"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-73"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-national-blue",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-61"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-61"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-pro3-turbo-blue",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-18"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-18"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-pro3-turbo-orange",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-19"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-19"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-pro2",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-21"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-21"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "kyohyo-pro3",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-22"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-22"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "nittaku-kyohyo3",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-24"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-24"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "morist-df",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-6"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-6"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "stellack",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-77"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/pimples-in/",
+          "https://www.nittaku.com/products/rubbers/post-77"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v15-sticky",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=764"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=764"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v15-sticky-soft",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=765"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=765"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v22-double-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=795"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=795"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v20-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=776"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=776"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v15-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=781"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=781"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v15-stiff",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=782"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=782"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "v15-limber",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=783"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=783"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "ventus-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=40"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=40"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "ventus-stiff",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=41"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=41"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "ventus-limber",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=42"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=42"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "ventus-regular-alpha",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=43"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=43"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vj-next",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=50"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=50"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "triple-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=54"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=54"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "triple-double-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=53"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=53"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "triple-regular",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=55"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=55"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vs401",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=787"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=787"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "curl-p1v",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=789"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=789"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "curl-p3v",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=791"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=791"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vo-102",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=799"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=799"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "spectol-s1",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=68"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.victas.com/products/?cat=3",
+          "https://www.victas.com/products/detail.html?id=68"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-xx",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rakza-xx/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rakza-xx/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-x",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza-x/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza-x/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-x-soft",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakzax-soft/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakzax-soft/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-z",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza-z/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza-z/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-z-eh",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza-z-extra-hard/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza-z-extra-hard/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-7",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rakza_7/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rakza_7/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-7-soft",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rakza_7_soft/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rakza_7_soft/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-7-hard",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza7hard/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza7hard/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-9",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza_9/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/rakza_9/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rigan",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/%e3%83%a9%e3%82%a4%e3%82%ac%e3%83%b3/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/%e3%83%a9%e3%82%a4%e3%82%ac%e3%83%b3/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rigan-spin",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/riganspin/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/riganspin/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "shining-dragon-2",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/shining-dragon2/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/shining-dragon2/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rising-dragon-2",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rising-dragon2/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/rising-dragon2/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "mark-v",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/markv/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/items/markv/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "original-extra",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/original_extra/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/original_extra/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "anti-power",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/anti_power/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/anti_power/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "trick-anti",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/trick-anti/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/trick-anti/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rakza-po",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/osr/",
+          "https://www.yasakajp.com/items/rakza_po/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/osr/",
+          "https://www.yasakajp.com/items/rakza_po/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "spinate",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/osr/",
+          "https://www.yasakajp.com/items/spinate/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/osr/",
+          "https://www.yasakajp.com/items/spinate/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "elfrark-rf",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/osr/",
+          "https://www.yasakajp.com/items/elfrark-rf/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/osr/",
+          "https://www.yasakajp.com/items/elfrark-rf/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "phantom-007",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/phantom_007/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/phantom_007/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "phantom-0011",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/phantom_0011_mugen/"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.yasakajp.com/goods/rub/",
+          "https://www.yasakajp.com/items/phantom_0011_mugen/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "hybrid-k3",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "hybrid-k3-fx",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "hybrid-mk",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "hybrid-mk-fx",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "evolution-mxd",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "evolution-eld",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "evolution-fxd",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "evolution-mxp",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "evolution-elp",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rapid",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rapid-soft",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "speedy-soft",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "speedy-soft-dtecs",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "grass-dtecs",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "grass-dtecs-gs",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式ラバー一覧の対象製品欄と、原産国個別表示がない製品はドイツ製という同一覧の明示規則を確認。対象欄に別国の指定なし。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://tibhar-japan.com/rubber/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "omega-8-china",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A/1127/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A/1127/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "omega-8-hybrid",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%8F%E3%82%A4%E3%83%96%E3%83%AA%E3%83%83%E3%83%89/1128/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%8F%E3%82%A4%E3%83%96%E3%83%AA%E3%83%83%E3%83%89/1128/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "omega-8-pro",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%97%E3%83%AD/1129/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%97%E3%83%AD/1129/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "omega-8-euro",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%A8%E3%83%BC%E3%83%AD/1130/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%AA%E3%83%A1%E3%82%AC-8-%E3%83%A8%E3%83%BC%E3%83%AD/1130/category/1/display/3/?icid=MAIN.product_listmain_2"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "jekyll-c575",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%B8%E3%82%AD%E3%83%AB%EF%BC%86%E3%83%8F%E3%82%A4%E3%83%89-c575/1109/category/1/display/2/?icid=MAIN.product_listmain_1"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%B8%E3%82%AD%E3%83%AB%EF%BC%86%E3%83%8F%E3%82%A4%E3%83%89-c575/1109/category/1/display/2/?icid=MAIN.product_listmain_1"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "jekyll-z525",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%B8%E3%82%AD%E3%83%AB%EF%BC%86%E3%83%8F%E3%82%A4%E3%83%89-z525/457/category/1/display/2/?icid=MAIN.product_listmain_1"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%82%B8%E3%82%AD%E3%83%AB%EF%BC%86%E3%83%8F%E3%82%A4%E3%83%89-z525/457/category/1/display/2/?icid=MAIN.product_listmain_1"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "jekyll-v475",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-x",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-x/478/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-x/478/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-tour",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%83%84%E3%82%A2%E3%83%BC/479/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%83%84%E3%82%A2%E3%83%BC/479/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-pro",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%83%97%E3%83%AD/480/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%83%97%E3%83%AD/480/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-asia",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%A2%E3%82%B8%E3%82%A2/481/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%A2%E3%82%B8%E3%82%A2/481/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-europe",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%83%A8%E3%83%BC%E3%83%AD%E3%83%83%E3%83%91/482/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%83%A8%E3%83%BC%E3%83%AD%E3%83%83%E3%83%91/482/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-japan",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3/487/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3/487/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-elite",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%A8%E3%83%AA%E3%83%BC%E3%83%88/488/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%A8%E3%83%AA%E3%83%BC%E3%83%88/488/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "vega-intro",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD/489/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://m.xiom.jp/",
+          "https://m.xiom.jp/product/%E3%83%B4%E3%82%A7%E3%82%AC-%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD/489/category/1/display/4/?icid=MAIN.product_listmain_3"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "helix-platinum-m",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/5108"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/5108"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "helix-platinum-h",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/5106"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/5106"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "helix-platinum-xh",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/helix"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。 旧country=ドイツは製品全体の根拠を再確認できないため表示値を除去。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/helix"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "helix-platinum-55",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/5095"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/5095"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-dragon-power-525",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2965"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2965"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-dragon-power-55",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2972"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2972"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-hybrid-h",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2358"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2358"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-hybrid-m",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2364"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2364"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-pro-h",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1450"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1450"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-pro-m",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1454"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1454"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-pro-s",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1457"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1457"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "dna-future-m",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1460"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1460"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "mantra-pro-m",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1474"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1474"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "mantra-pro-h",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1471"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1471"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "mantra-pro-xh",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1466"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1466"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "mantra-control",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2462"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/2462"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "symmetry",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1494"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1494"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "clippa",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1496"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "confirmed",
+        "value": true,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1496"
+        ],
+        "note": "クリッパの公式製品説明に生産終了製品と明記。共通メニューの廃盤商品表示は他製品の廃番根拠に使っていない。"
+      }
+    },
+    {
+      "id": "vertical-20",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1500"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1500"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "horizontal-55",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1512"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://stigasports.jp/products/1512"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluegrip-j1",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL107"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL107"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluegrip-j2",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL108"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL108"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluegrip-j3",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL109"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL109"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestar-a1",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL101"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL101"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestar-a2",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL103"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL103"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestar-a3",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL104"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL104"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestorm-pro",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL097"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL097"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestorm-pro-am",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL098"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL098"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestorm-z1",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL086"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL086"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestorm-z2",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL087"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL087"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "bluestorm-z3",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL088"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL088"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "baracuda",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL043"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL043"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "baxster-f1a",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL020"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL020"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "piranha-cd",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL102"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL102"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "spike-p1",
+      "country": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL073"
+        ],
+        "note": "公式出典を確認したが、製品全体の製造国の明記を確認できなかった。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL073"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "alligator-anti",
+      "country": {
+        "status": "confirmed",
+        "value": "中国",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL061"
+        ],
+        "note": "対象製品の公式説明で製品全体を中国製アンチラバーと明記。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.donic.jp/home/catalogue.php?pg=A/AL061"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rasanter-r45",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://andro.jp/?item=rasanter-r45"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://andro.jp/?item=rasanter-r45"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rasanter-r48",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://andro.jp/?item=rasanter-r48"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://andro.jp/?item=rasanter-r48"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "rasanter-r53",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://andro.jp/?item=rasanter-r53"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://andro.jp/?item=rasanter-r53"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "trinity-hugo-calderano-dynamic",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-in-rubbers",
+          "https://joola.co.jp/products/trinity-hugo-calderano-dynamic"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-in-rubbers",
+          "https://joola.co.jp/products/trinity-hugo-calderano-dynamic"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "trinity-hugo-calderano-charge",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-in-rubbers",
+          "https://joola.co.jp/products/trinity-hugo-calderano-charge"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-in-rubbers",
+          "https://joola.co.jp/products/trinity-hugo-calderano-charge"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "golden-tango",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-in-rubbers",
+          "https://joola.co.jp/products/golden-tango"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-in-rubbers",
+          "https://joola.co.jp/products/golden-tango"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "tango-ultra",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/products/tango-ultra-table-tennis-rubber"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/products/tango-ultra-table-tennis-rubber"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "express-ultra",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/products/express-ultra-table-tennis-rubber"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/products/express-ultra-table-tennis-rubber"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "allegro-s",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-out-rubbers",
+          "https://joola.co.jp/products/joola-japan-allegro-s"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-out-rubbers",
+          "https://joola.co.jp/products/joola-japan-allegro-s"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "adagio",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-out-rubbers",
+          "https://joola.co.jp/products/joola-japan-adagio"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-out-rubbers",
+          "https://joola.co.jp/products/joola-japan-adagio"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "scordato",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-out-rubbers",
+          "https://joola.co.jp/products/joola-japan-scordato"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://joola.co.jp/collections/table-tennis-rubbers-pimples-out-rubbers",
+          "https://joola.co.jp/products/joola-japan-scordato"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "juic-999-elite",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.juic.co.jp/view/item/000000000083"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.juic.co.jp/view/item/000000000083"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "spin-spiel",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.juic.co.jp/view/item/000000000067"
+        ],
+        "note": "対象製品の公式仕様に記載された製造国を確認。部材や比較対象の製造国からの推測ではない。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-04",
+        "sources": [
+          "https://www.juic.co.jp/view/item/000000000067"
+        ],
+        "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
+      }
+    }
+  ]
+}

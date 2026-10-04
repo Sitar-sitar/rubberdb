@@ -25,14 +25,16 @@ export function pruneFavorites(
  * 保存セットを再確認している間（pinnedSet あり）は、現在の提案ではなく保存時の 2 枚を表示する。
  */
 export function resolveDisplayedSet(
-  suggestion: { fore: Rubber; back: Rubber },
+  suggestion: { fore: Rubber; back: Rubber } | null,
   pinnedSet: PinnedSet | null,
   catalog: Rubber[]
-): { fore: Rubber; back: Rubber; pinned: boolean } {
+): { fore: Rubber; back: Rubber; pinned: boolean } | null {
   if (pinnedSet) {
     const fore = catalog.find(rubber => rubber.id === pinnedSet.foreId);
     const back = catalog.find(rubber => rubber.id === pinnedSet.backId);
     if (fore && back) return { fore, back, pinned: true };
   }
-  return { fore: suggestion.fore, back: suggestion.back, pinned: false };
+  return suggestion
+    ? { fore: suggestion.fore, back: suggestion.back, pinned: false }
+    : null;
 }

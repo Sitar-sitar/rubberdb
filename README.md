@@ -21,6 +21,7 @@
 
 1. `client/src/lib/rubbers/<ブランド>.ts` の末尾に 1 件追記する。
 2. `tests/unit/publishedIds.json` に ID を追記する。
+   同時に `docs/data/product-verification.json` に原産国・廃番の調査結果を追記する（全IDと1対1）。
 3. `pnpm test` を実行する。診断スナップショットが変わって落ちた場合は差分を確認し、意図どおりなら `pnpm test -u` で更新して、スナップショットの差分もコミットに含める。
 4. `pnpm check`、`pnpm build`、`pnpm verify:artifact` を通す。
 
@@ -36,9 +37,16 @@
 - `id` は英小文字・数字・ハイフンのみ。
 - `price` はメーカー公式の税込価格（円）。オープン価格は `null`。表示用の文字列は自動生成されるので書かない。
 - `verifiedAt` は公式ページを確認した日（`YYYY-MM-DD`）。
+- `country` は製品単位の公式製造国を確認できた場合のみ記載する。部材・比較対象・ブランド本社所在地から推測しない。確認できない場合は省略し、画面では「未確認」と表示する。
+- `discontinued` は公式の製品単位の生産終了告知を確認した場合のみ `true`。製品と公開IDを削除しない。未指定は現行品の保証ではない。廃番は新規推薦から除外し、保存済みデータは保持する。
+- 調査台帳には項目ごとの `confirmed` / `unconfirmed`、値（未確認は `null`）、実際の確認日（JST）、ブランドの許可ホスト内の公式HTTPS出典、根拠または未確認理由を記録する。原産国だけの調査で既存 `verifiedAt` を更新しない。
 - `source` は、そのブランドの公式ドメイン（`brands.ts` の `hosts`）の https URL。
 - `speed` / `spin` / `control` は 1〜5 の整数。サイト内比較用の目安。
 - JS の合計サイズ上限は 400 kB（`scripts/verify-build-artifact.mjs`）。近づいたら、上限を上げる前にデータの分割読み込みを検討する。
+
+### 診断の変更を検証する
+
+`pnpm report:recommendations` は全54条件・108面の得点、同点数、比較候補、採用分布をJSON出力する。同点はASCII ID順で決め、比較候補だけ同点内でブランドを巡回する。スナップショットを更新する前に新旧差分の理由と最高得点・予算・廃番制約を確認する。v1.2.0の比較記録は `docs/research/recommendation-v1.2.0-comparison.md`。本バッチの公開基準はJS 390 KiB以下・CSS 60 KiB以下。
 
 ## ドキュメント
 

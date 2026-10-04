@@ -21,6 +21,8 @@ describe("診断結果のスナップショット", () => {
               level,
               budget,
             });
+            if (result.status !== "ready")
+              throw new Error(`Insufficient: ${level}/${budget}`);
             const top = (list: typeof result.foreList) =>
               list
                 .slice(0, 4)
@@ -29,7 +31,9 @@ describe("診断結果のスナップショット", () => {
             lines.push(
               `${level}/${budget}/fore:${foreRole}/back:${backRole} => ` +
                 `${result.fore.id} + ${result.back.id} | ` +
-                `fore[${top(result.foreList)}] back[${top(result.backList)}]`
+                `fore[${top(result.foreList)}] back[${top(result.backList)}] | ` +
+                `ties:${result.foreTopTieCount}/${result.backTopTieCount} | ` +
+                `alternatives:${result.foreAlternatives.map(r => r.id).join(",")}/${result.backAlternatives.map(r => r.id).join(",")}`
             );
           }
         }
