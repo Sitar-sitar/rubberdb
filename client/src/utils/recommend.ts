@@ -61,38 +61,121 @@ export type SetConditions = {
   budget: Budget;
 };
 
-export type SetSuggestion = {
+type ExcludedCounts = {
+  excludedUnknownPriceCount: number;
+  excludedDiscontinuedCount: number;
+};
+
+export type ReadySetSuggestion = ExcludedCounts & {
+  status: "ready";
   fore: Rubber;
   back: Rubber;
   foreList: Rubber[];
   backList: Rubber[];
-  /** 予算条件でオープン価格の商品を除外した件数 */
-  excludedUnknownPriceCount: number;
+  foreAlternatives: Rubber[];
+  backAlternatives: Rubber[];
+  foreTopTieCount: number;
+  backTopTieCount: number;
 };
+
+export type SetSuggestion =
+  | ReadySetSuggestion
+  | (ExcludedCounts & {
+      status: "insufficient";
+      candidateCount: number;
+    });
+
+function rank(candidates: Rubber[], role: Role, level: Level): Rubber[] {
+  return [...candidates].sort((a, b) => {
+    const difference = sideScore(b, role, level) - sideScore(a, role, level);
+    return difference || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+  });
+}
+
+/** 同点群の中だけブランドを巡回する。得点順と主推薦は変更しない。 */
+export function comparisonAlternatives(
+  ranked: Rubber[],
+  role: Role,
+  level: Level,
+  selectedIds: ReadonlySet<string>
+): Rubber[] {
+  const groups = new Map<number, Map<string, Rubber[]>>();
+  for (const rubber of ranked) {
+    if (selectedIds.has(rubber.id)) continue;
+    const score = sideScore(rubber, role, level);
+    if (!groups.has(score)) groups.set(score, new Map());
+    const group = groups.get(score)!;
+    if (!group.has(rubber.brand)) group.set(rubber.brand, []);
+    group.get(rubber.brand)!.push(rubber);
+  }
+  const alternatives: Rubber[] = [];
+  for (const group of groups.values()) {
+    const queues = Array.from(group.values());
+    for (let round = 0; queues.some(queue => queue.length > round); round++) {
+      for (const queue of queues) {
+        if (queue[round]) alternatives.push(queue[round]);
+        if (alternatives.length === 3) return alternatives;
+      }
+    }
+  }
+  return alternatives;
+}
 
 export function suggestSet(
   catalog: Rubber[],
   conditions: SetConditions
 ): SetSuggestion {
   const { foreRole, backRole, level, budget } = conditions;
-  const candidates = catalog.filter(rubber => withinBudget(rubber, budget));
+  const available = catalog.filter(rubber => rubber.discontinued !== true);
+  const candidates = available.filter(rubber => withinBudget(rubber, budget));
   const excludedUnknownPriceCount =
     BUDGET_LIMITS[budget] === null
       ? 0
-      : catalog.filter(rubber => rubber.price === null).length;
-
-  const foreList = [...candidates].sort(
-    (a, b) => sideScore(b, foreRole, level) - sideScore(a, foreRole, level)
+      : available.filter(rubber => rubber.price === null).length;
+  const excludedDiscontinuedCount = catalog.length - available.length;
+  const counts = { excludedUnknownPriceCount, excludedDiscontinuedCount };
+  if (candidates.length < 2) {
+    return {
+      status: "insufficient",
+      candidateCount: candidates.length,
+      ...counts,
+    };
+  }
+  const foreList = rank(candidates, foreRole, level);
+  const fore = foreList[0];
+  const backList = rank(
+    candidates.filter(rubber => rubber.id !== fore.id),
+    backRole,
+    level
   );
-  // 予算内候補が 2 件未満のときだけ catalog へフォールバックする。全予算で 2 件以上あることは
-  // tests/unit/recommend.test.ts の不変条件テストで保証する（修正設計書 2026-10-01 BUG-07）。
-  const fore = foreList[0] ?? catalog[0];
-  const backList = [...candidates]
-    .filter(rubber => rubber.id !== fore.id)
-    .sort(
-      (a, b) => sideScore(b, backRole, level) - sideScore(a, backRole, level)
-    );
-  const back = backList[0] ?? foreList[1] ?? catalog[1];
-
-  return { fore, back, foreList, backList, excludedUnknownPriceCount };
+  const back = backList[0];
+  const selectedIds = new Set([fore.id, back.id]);
+  return {
+    status: "ready",
+    fore,
+    back,
+    foreList,
+    backList,
+    ...counts,
+    foreAlternatives: comparisonAlternatives(
+      foreList,
+      foreRole,
+      level,
+      selectedIds
+    ),
+    backAlternatives: comparisonAlternatives(
+      backList,
+      backRole,
+      level,
+      selectedIds
+    ),
+    foreTopTieCount: foreList.filter(
+      rubber =>
+        sideScore(rubber, foreRole, level) === sideScore(fore, foreRole, level)
+    ).length,
+    backTopTieCount: backList.filter(
+      rubber =>
+        sideScore(rubber, backRole, level) === sideScore(back, backRole, level)
+    ).length,
+  };
 }

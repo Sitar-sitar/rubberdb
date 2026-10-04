@@ -25,7 +25,7 @@ function withBrand(brand: BrandId, entries: RubberEntry[]): Rubber[] {
   return entries.map(entry => ({ ...entry, brand }));
 }
 
-/** 連結順は lib/brands.ts と同じ。カタログの表示順と、診断の同点時の優先順になる。 */
+/** 連結順は lib/brands.ts と同じ。カタログ表示順に使用し、診断の同点はID順で決める。 */
 export const rubbers: Rubber[] = [
   ...withBrand("Butterfly", butterfly),
   ...withBrand("Nittaku", nittaku),

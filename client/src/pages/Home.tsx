@@ -16,7 +16,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   chinaGuideRubberIds,
   rubbers,
@@ -49,7 +49,7 @@ import {
   resolveDisplayedSet,
   type PinnedSet,
 } from "@/utils/favorites";
-import { suggestSet } from "@/utils/recommend";
+import { sideScore, suggestSet } from "@/utils/recommend";
 import {
   backOptions,
   foreOptions,
@@ -143,15 +143,19 @@ export default function Home() {
     : catalogResults.slice(0, 24);
   const beginnerChinaGuide = useMemo(
     () =>
-      rubbers.filter(rubber =>
-        chinaGuideRubberIds.beginner.includes(rubber.id)
+      rubbers.filter(
+        rubber =>
+          chinaGuideRubberIds.beginner.includes(rubber.id) &&
+          rubber.discontinued !== true
       ),
     []
   );
   const advancedChinaGuide = useMemo(
     () =>
-      rubbers.filter(rubber =>
-        chinaGuideRubberIds.advanced.includes(rubber.id)
+      rubbers.filter(
+        rubber =>
+          chinaGuideRubberIds.advanced.includes(rubber.id) &&
+          rubber.discontinued !== true
       ),
     []
   );
@@ -159,21 +163,35 @@ export default function Home() {
     () => suggestSet(rubbers, { foreRole, backRole, level, budget }),
     [backRole, budget, foreRole, level]
   );
-  const { foreList, backList } = suggestion;
   // 保存セットの再確認中は、現在の提案ではなく保存時の 2 枚を表示する（BUG-02）。
-  const { fore, back, pinned } = useMemo(
-    () => resolveDisplayedSet(suggestion, pinnedSet, rubbers),
+  const displayedSet = useMemo(
+    () =>
+      resolveDisplayedSet(
+        suggestion.status === "ready" ? suggestion : null,
+        pinnedSet,
+        rubbers
+      ),
     [pinnedSet, suggestion]
   );
+  const fore = displayedSet?.fore ?? null;
+  const back = displayedSet?.back ?? null;
   const pinnedDiffersFromSuggestion =
-    pinned &&
-    (fore.id !== suggestion.fore.id || back.id !== suggestion.back.id);
-  const setPrice = useMemo(() => calcSetPrice([fore, back]), [back, fore]);
+    displayedSet?.pinned &&
+    (suggestion.status === "insufficient" ||
+      fore?.id !== suggestion.fore.id ||
+      back?.id !== suggestion.back.id);
+  const setPrice = useMemo(
+    () => (fore && back ? calcSetPrice([fore, back]) : null),
+    [back, fore]
+  );
   const handText =
     handedness === "right"
       ? "右利きのため、構えたときに右手のフォアと左側で支えるバックを意識して案内します。"
       : "左利きのため、構えたときに左手のフォアと右側で支えるバックを意識して案内します。";
-  const currentSetId = `${handedness}-${fore.id}-${back.id}-${foreRole}-${backRole}-${level}-${budget}`;
+  const currentSetId =
+    fore && back
+      ? `${handedness}-${fore.id}-${back.id}-${foreRole}-${backRole}-${level}-${budget}`
+      : null;
   const currentSetSaved = favoriteSets.some(saved => saved.id === currentSetId);
   const favoriteRubbers = rubbers.filter(rubber =>
     favoriteRubberIds.includes(rubber.id)
@@ -199,7 +217,8 @@ export default function Home() {
         ? current.filter(item => item !== id)
         : [id, ...current]
     );
-  const toggleCurrentSet = () =>
+  const toggleCurrentSet = () => {
+    if (!fore || !back || !currentSetId) return;
     setFavoriteSets(current =>
       current.some(saved => saved.id === currentSetId)
         ? current.filter(saved => saved.id !== currentSetId)
@@ -218,6 +237,7 @@ export default function Home() {
             ...current,
           ]
     );
+  };
   const restoreSet = (saved: SavedSet) => {
     setHandedness(saved.handedness);
     setForeRole(saved.foreRole);
@@ -230,7 +250,13 @@ export default function Home() {
       () =>
         document
           .getElementById("result")
-          ?.scrollIntoView({ behavior: "smooth", block: "start" }),
+          ?.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+              .matches
+              ? "auto"
+              : "smooth",
+            block: "start",
+          }),
       0
     );
   };
@@ -497,177 +523,240 @@ export default function Home() {
           id="result"
           className="relative overflow-hidden bg-[#edf4fa] px-5 py-20 [background-image:linear-gradient(rgba(8,42,89,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(8,42,89,.06)_1px,transparent_1px)] [background-size:30px_30px]"
         >
-          <div className="relative mx-auto max-w-[1240px]">
-            <div className="grid gap-8 md:grid-cols-[1fr_290px] md:items-end">
-              <div>
-                <p className="font-mono text-[10px] font-black tracking-[.14em] text-[#1768db]">
-                  STEP 04 / YOUR TWO-SIDED SET
-                </p>
-                <h2 className="mt-4 text-4xl font-black tracking-[-.055em] md:text-5xl">
-                  あなたの役割分担は、
-                  <br />
-                  この2枚から。
-                </h2>
-                <p className="mt-5 max-w-2xl text-sm leading-7 text-[#586d82]">
-                  フォアは{" "}
-                  <strong className="text-[#082a59]">
-                    {roleLabel("fore", foreRole)}
-                  </strong>
-                  、バックは{" "}
-                  <strong className="text-[#082a59]">
-                    {roleLabel("back", backRole)}
-                  </strong>{" "}
-                  を優先した組み合わせです。{handText}
-                </p>
-                {pinnedDiffersFromSuggestion && (
-                  <p className="mt-4 max-w-2xl border-l-4 border-[#1768db] bg-white px-4 py-3 text-xs font-bold leading-6 text-[#365c82]">
-                    保存したときの組み合わせを表示しています。現在のデータでは提案が変わっています。{" "}
-                    <button
-                      onClick={() => setPinnedSet(null)}
-                      className="text-[#1768db] underline underline-offset-4"
-                      type="button"
-                    >
-                      現在の提案を見る
-                    </button>
-                  </p>
-                )}
-              </div>
-              <div className="border-l-4 border-[#c7fa42] bg-white p-5">
-                <p className="font-mono text-[10px] font-black tracking-[.12em] text-[#365c82]">
-                  SET TOTAL / REFERENCE
-                </p>
-                <p className="mt-2 font-display text-4xl font-black tracking-[-.05em]">
-                  {setPriceHeadline(setPrice)}
-                </p>
-                <p className="mt-1 text-xs font-bold leading-5 text-[#567088]">
-                  {setPriceNote(setPrice)}
-                </p>
-                <button
-                  onClick={toggleCurrentSet}
-                  className={`mt-4 inline-flex items-center gap-2 px-3 py-2 text-[10px] font-black transition ${currentSetSaved ? "bg-[#082a59] text-white" : "bg-[#c7fa42] text-[#082a59] hover:bg-[#b9ed32]"}`}
-                  type="button"
-                >
-                  <Heart
-                    size={13}
-                    fill={currentSetSaved ? "currentColor" : "none"}
-                  />{" "}
-                  {currentSetSaved ? "保存済みのセット" : "このセットを保存"}
-                </button>
-              </div>
-            </div>
-            <div className="mt-9 overflow-hidden border border-[#082a59] bg-[#082a59] text-white">
-              <div className="flex items-center justify-between border-b border-white/15 px-6 py-4">
+          {fore && back && setPrice ? (
+            <div className="relative mx-auto max-w-[1240px]">
+              <div className="grid gap-8 md:grid-cols-[1fr_290px] md:items-end">
                 <div>
-                  <p className="font-mono text-[10px] font-black tracking-[.13em] text-[#c7fa42]">
-                    SET MAP /{" "}
-                    {handedness === "right" ? "RIGHT-HANDED" : "LEFT-HANDED"}
+                  <p className="font-mono text-[10px] font-black tracking-[.14em] text-[#1768db]">
+                    STEP 04 / YOUR TWO-SIDED SET
                   </p>
-                  <p className="mt-1 text-sm font-black">
-                    役割の違う2枚を、同じラケットに。
+                  <h2 className="mt-4 text-4xl font-black tracking-[-.055em] md:text-5xl">
+                    あなたの役割分担は、
+                    <br />
+                    この2枚から。
+                  </h2>
+                  <p className="mt-5 max-w-2xl text-sm leading-7 text-[#586d82]">
+                    フォアは{" "}
+                    <strong className="text-[#082a59]">
+                      {roleLabel("fore", foreRole)}
+                    </strong>
+                    、バックは{" "}
+                    <strong className="text-[#082a59]">
+                      {roleLabel("back", backRole)}
+                    </strong>{" "}
+                    を優先した組み合わせです。{handText}
                   </p>
+                  {pinnedDiffersFromSuggestion && (
+                    <p className="mt-4 max-w-2xl border-l-4 border-[#1768db] bg-white px-4 py-3 text-xs font-bold leading-6 text-[#365c82]">
+                      保存したときの組み合わせを表示しています。現在の条件では提案が変わっています。{" "}
+                      <button
+                        onClick={() => setPinnedSet(null)}
+                        className="text-[#1768db] underline underline-offset-4"
+                        type="button"
+                      >
+                        現在の提案を見る
+                      </button>
+                    </p>
+                  )}
                 </div>
-                <span className="grid h-9 w-9 place-items-center rounded-full border border-[#c7fa42] text-[#c7fa42]">
-                  <Sparkles size={16} />
-                </span>
+                <div className="border-l-4 border-[#c7fa42] bg-white p-5">
+                  <p className="font-mono text-[10px] font-black tracking-[.12em] text-[#365c82]">
+                    SET TOTAL / REFERENCE
+                  </p>
+                  <p className="mt-2 font-display text-4xl font-black tracking-[-.05em]">
+                    {setPriceHeadline(setPrice)}
+                  </p>
+                  <p className="mt-1 text-xs font-bold leading-5 text-[#567088]">
+                    {setPriceNote(setPrice)}
+                  </p>
+                  <button
+                    onClick={toggleCurrentSet}
+                    aria-pressed={currentSetSaved}
+                    className={`mt-4 inline-flex items-center gap-2 px-3 py-2 text-[10px] font-black transition ${currentSetSaved ? "bg-[#082a59] text-white" : "bg-[#c7fa42] text-[#082a59] hover:bg-[#b9ed32]"}`}
+                    type="button"
+                  >
+                    <Heart
+                      size={13}
+                      fill={currentSetSaved ? "currentColor" : "none"}
+                    />{" "}
+                    {currentSetSaved ? "保存済みのセット" : "このセットを保存"}
+                  </button>
+                </div>
               </div>
-              <div className="grid lg:grid-cols-[1fr_64px_1fr]">
-                <SetCard
-                  side="FOREHAND"
-                  role={roleLabel("fore", foreRole)}
-                  rubber={fore}
-                  reason={
-                    foreRole === "spin"
-                      ? "回転と弧線を使って、自分から先に攻めるための一枚。"
-                      : foreRole === "counter"
-                        ? "早い打点で相手の球を押し返し、得点につなげる一枚。"
-                        : "ミスを減らし、ラリーの起点をつくる一枚。"
-                  }
-                  onInspect={() =>
-                    setDetail({
-                      rubber: fore,
-                      side: "FOREHAND",
-                      role: roleLabel("fore", foreRole),
-                    })
-                  }
-                />
-                <div className="relative z-10 grid place-items-center">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-[#c7fa42] text-lg text-[#082a59]">
-                    +
+              <div className="mt-9 overflow-hidden border border-[#082a59] bg-[#082a59] text-white">
+                <div className="flex items-center justify-between border-b border-white/15 px-6 py-4">
+                  <div>
+                    <p className="font-mono text-[10px] font-black tracking-[.13em] text-[#c7fa42]">
+                      SET MAP /{" "}
+                      {handedness === "right" ? "RIGHT-HANDED" : "LEFT-HANDED"}
+                    </p>
+                    <p className="mt-1 text-sm font-black">
+                      役割の違う2枚を、同じラケットに。
+                    </p>
+                  </div>
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-[#c7fa42] text-[#c7fa42]">
+                    <Sparkles size={16} />
                   </span>
                 </div>
-                <div className="border-t border-white/15 lg:border-l lg:border-t-0">
+                <div className="grid lg:grid-cols-[1fr_64px_1fr]">
                   <SetCard
-                    side="BACKHAND"
-                    role={roleLabel("back", backRole)}
-                    rubber={back}
+                    side="FOREHAND"
+                    role={roleLabel("fore", foreRole)}
+                    rubber={fore}
                     reason={
-                      backRole === "control"
-                        ? "ブロックと台上を安定させ、次のフォアにつなぐ一枚。"
-                        : backRole === "counter"
-                          ? "バックでも早く打ち返し、相手を待たせない一枚。"
-                          : "バックでも回転をかけ、両ハンドでラリーを組み立てる一枚。"
+                      foreRole === "spin"
+                        ? "回転と弧線を使って、自分から先に攻めるための一枚。"
+                        : foreRole === "counter"
+                          ? "早い打点で相手の球を押し返し、得点につなげる一枚。"
+                          : "ミスを減らし、ラリーの起点をつくる一枚。"
                     }
                     onInspect={() =>
                       setDetail({
-                        rubber: back,
-                        side: "BACKHAND",
-                        role: roleLabel("back", backRole),
+                        rubber: fore,
+                        side: "FOREHAND",
+                        role: roleLabel("fore", foreRole),
                       })
                     }
                   />
+                  <div className="relative z-10 grid place-items-center">
+                    <span className="grid h-10 w-10 place-items-center rounded-full bg-[#c7fa42] text-lg text-[#082a59]">
+                      +
+                    </span>
+                  </div>
+                  <div className="border-t border-white/15 lg:border-l lg:border-t-0">
+                    <SetCard
+                      side="BACKHAND"
+                      role={roleLabel("back", backRole)}
+                      rubber={back}
+                      reason={
+                        backRole === "control"
+                          ? "ブロックと台上を安定させ、次のフォアにつなぐ一枚。"
+                          : backRole === "counter"
+                            ? "バックでも早く打ち返し、相手を待たせない一枚。"
+                            : "バックでも回転をかけ、両ハンドでラリーを組み立てる一枚。"
+                      }
+                      onInspect={() =>
+                        setDetail({
+                          rubber: back,
+                          side: "BACKHAND",
+                          role: roleLabel("back", backRole),
+                        })
+                      }
+                    />
+                  </div>
                 </div>
               </div>
+              <p className="mt-5 flex items-start gap-2 text-xs leading-5 text-[#607389]">
+                <CircleHelp className="mt-0.5 shrink-0" size={15} />{" "}
+                提案は公式価格・種別と、サイト内の性能傾向を使った選択支援です。点数はサイト内の目安で、公式の性能順位ではありません。厚さやラケットとの相性によって打球感は変わります。
+              </p>
+              {suggestion.status === "ready" &&
+                !pinnedDiffersFromSuggestion && (
+                  <>
+                    <TieNotice
+                      side="フォア"
+                      count={suggestion.foreTopTieCount}
+                    />
+                    <TieNotice
+                      side="バック"
+                      count={suggestion.backTopTieCount}
+                    />
+                    <div className="mt-8 text-center">
+                      <button
+                        onClick={() => setShowAlternatives(value => !value)}
+                        aria-expanded={showAlternatives}
+                        aria-controls="set-alternatives"
+                        className="inline-flex items-center gap-2 border border-[#082a59] bg-white px-5 py-3 text-xs font-black text-[#082a59] transition hover:bg-[#082a59] hover:text-white"
+                        type="button"
+                      >
+                        {showAlternatives
+                          ? "ほかの組み合わせを閉じる"
+                          : "ほかの候補も比べる"}{" "}
+                        <ChevronRight
+                          className={showAlternatives ? "rotate-90" : ""}
+                          size={15}
+                        />
+                      </button>
+                    </div>
+                    <div
+                      id="set-alternatives"
+                      hidden={!showAlternatives}
+                      className={
+                        showAlternatives
+                          ? "mt-5 grid gap-4 md:grid-cols-2"
+                          : undefined
+                      }
+                    >
+                      <AlternativeList
+                        title="フォアの候補"
+                        list={suggestion.foreAlternatives}
+                        sameScoreIds={
+                          new Set(
+                            suggestion.foreAlternatives
+                              .filter(
+                                rubber =>
+                                  sideScore(rubber, foreRole, level) ===
+                                  sideScore(suggestion.fore, foreRole, level)
+                              )
+                              .map(rubber => rubber.id)
+                          )
+                        }
+                        side="FOREHAND"
+                        role={roleLabel("fore", foreRole)}
+                        onInspect={rubber =>
+                          setDetail({
+                            rubber,
+                            side: "FOREHAND",
+                            role: roleLabel("fore", foreRole),
+                          })
+                        }
+                      />
+                      <AlternativeList
+                        title="バックの候補"
+                        list={suggestion.backAlternatives}
+                        sameScoreIds={
+                          new Set(
+                            suggestion.backAlternatives
+                              .filter(
+                                rubber =>
+                                  sideScore(rubber, backRole, level) ===
+                                  sideScore(suggestion.back, backRole, level)
+                              )
+                              .map(rubber => rubber.id)
+                          )
+                        }
+                        side="BACKHAND"
+                        role={roleLabel("back", backRole)}
+                        onInspect={rubber =>
+                          setDetail({
+                            rubber,
+                            side: "BACKHAND",
+                            role: roleLabel("back", backRole),
+                          })
+                        }
+                      />
+                    </div>
+                  </>
+                )}
             </div>
-            <p className="mt-5 flex items-start gap-2 text-xs leading-5 text-[#607389]">
-              <CircleHelp className="mt-0.5 shrink-0" size={15} />{" "}
-              提案は公式価格・種別と、サイト内の性能傾向を使った選択支援です。厚さやラケットとの相性によって打球感は変わります。
-            </p>
-            <div className="mt-8 text-center">
-              <button
-                onClick={() => setShowAlternatives(value => !value)}
-                className="inline-flex items-center gap-2 border border-[#082a59] bg-white px-5 py-3 text-xs font-black text-[#082a59] transition hover:bg-[#082a59] hover:text-white"
-                type="button"
-              >
-                {showAlternatives
-                  ? "ほかの組み合わせを閉じる"
-                  : "ほかの候補も比べる"}{" "}
-                <ChevronRight
-                  className={showAlternatives ? "rotate-90" : ""}
-                  size={15}
-                />
-              </button>
-            </div>
-            {showAlternatives && (
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
-                <AlternativeList
-                  title="フォアの候補"
-                  list={foreList.slice(1, 4)}
-                  side="FOREHAND"
-                  role={roleLabel("fore", foreRole)}
-                  onInspect={rubber =>
-                    setDetail({
-                      rubber,
-                      side: "FOREHAND",
-                      role: roleLabel("fore", foreRole),
-                    })
-                  }
-                />
-                <AlternativeList
-                  title="バックの候補"
-                  list={backList.slice(1, 4)}
-                  side="BACKHAND"
-                  role={roleLabel("back", backRole)}
-                  onInspect={rubber =>
-                    setDetail({
-                      rubber,
-                      side: "BACKHAND",
-                      role: roleLabel("back", backRole),
-                    })
-                  }
-                />
+          ) : (
+            <div className="relative mx-auto max-w-[1240px] border border-[#cbd8e1] bg-white p-6">
+              <h2 className="text-2xl font-black">
+                条件に合う製品が2枚そろいません
+              </h2>
+              <p className="mt-3">
+                該当する製品は{" "}
+                {suggestion.status === "insufficient"
+                  ? suggestion.candidateCount
+                  : 0}{" "}
+                件です。予算を選び直すか、カタログで製品を確認してください。
+              </p>
+              <div className="mt-4 flex flex-wrap gap-4 text-[#0c477b] underline">
+                <a href="#diagnose">予算を選び直す</a>
+                <a href="#catalog">カタログを見る</a>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </section>
         <section
           id="catalog"
@@ -688,10 +777,12 @@ export default function Home() {
               <p className="text-sm leading-6 text-[#657487]">
                 製品名・ブランド・ラバー種別で、国内流通 {modelCount}{" "}
                 モデルを検索できます。検索結果のすべてで詳細を開けます。
+                原産国は詳細で確認できます。未確認の製品もあります。
               </p>
             </div>
             <div className="mt-7 grid gap-3 md:grid-cols-[1fr_180px_180px]">
               <label className="flex items-center gap-3 border border-[#bfcfdb] bg-white px-4 py-3">
+                <span className="sr-only">ラバー検索</span>
                 <Search size={18} className="text-[#1768db]" />
                 <input
                   value={catalogQuery}
@@ -705,6 +796,7 @@ export default function Home() {
                 />
               </label>
               <select
+                aria-label="ラバーの種別"
                 value={catalogType}
                 onChange={event => {
                   setCatalogType(event.target.value as RubberType | "すべて");
@@ -719,6 +811,7 @@ export default function Home() {
                 <option value="アンチ">アンチ</option>
               </select>
               <select
+                aria-label="ブランド"
                 value={catalogBrand}
                 onChange={event => {
                   setCatalogBrand(
@@ -741,7 +834,11 @@ export default function Home() {
                 <p className="font-mono text-[10px] font-black tracking-[.12em] text-[#1768db]">
                   SEARCH RESULT
                 </p>
-                <p className="mt-1 text-sm text-[#64778b]">
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className="mt-1 text-sm text-[#64778b]"
+                >
                   <strong className="font-display text-4xl font-black text-[#082a59]">
                     {catalogResults.length}
                   </strong>{" "}
@@ -952,6 +1049,9 @@ export default function Home() {
                       }
                     />
                   ))}
+                  {beginnerChinaGuide.length === 0 && (
+                    <p>掲載候補は現在ありません</p>
+                  )}
                 </div>
               </article>
               <article className="border border-white/25 bg-[#061f42] p-6 shadow-[8px_8px_0_rgba(255,255,255,.1)]">
@@ -998,6 +1098,9 @@ export default function Home() {
                       }
                     />
                   ))}
+                  {advancedChinaGuide.length === 0 && (
+                    <p>掲載候補は現在ありません</p>
+                  )}
                 </div>
               </article>
             </div>
@@ -1073,12 +1176,19 @@ function QuestionPanel({
   description: string;
   children: React.ReactNode;
 }) {
+  const labelId = useId();
   return (
-    <article className="border border-[#d6e0e7] bg-white p-5">
+    <article
+      role="group"
+      aria-labelledby={labelId}
+      className="border border-[#d6e0e7] bg-white p-5"
+    >
       <p className="font-mono text-[10px] font-black tracking-[.12em] text-[#1768db]">
         STEP {step}
       </p>
-      <h3 className="mt-3 text-xl font-black tracking-[-.04em]">{title}</h3>
+      <h3 id={labelId} className="mt-3 text-xl font-black tracking-[-.04em]">
+        {title}
+      </h3>
       <p className="mt-2 min-h-10 text-xs leading-5 text-[#69798a]">
         {description}
       </p>
@@ -1100,6 +1210,7 @@ function SelectPill({
   return (
     <button
       onClick={onClick}
+      aria-pressed={active}
       className={`flex min-h-16 flex-col items-center justify-center gap-1 border text-xs font-black transition ${active ? "border-[#c7fa42] bg-[#c7fa42] text-[#082a59] shadow-[inset_0_-3px_0_#082a59]" : "border-[#d6e0e7] text-[#657487] hover:border-[#082a59]"}`}
       type="button"
     >
@@ -1123,6 +1234,7 @@ function RoleGrid({
         <button
           key={option.id}
           onClick={() => onChange(option.id)}
+          aria-pressed={value === option.id}
           className={`border p-3 text-left transition ${value === option.id ? "border-[#c7fa42] bg-[#c7fa42] text-[#082a59] shadow-[inset_4px_0_0_#082a59]" : "border-[#d6e0e7] hover:border-[#082a59]"}`}
           type="button"
         >
@@ -1147,9 +1259,13 @@ function ChoiceGroup({
   note?: string;
   children: React.ReactNode;
 }) {
+  const labelId = useId();
   return (
-    <div>
-      <p className="mb-3 font-mono text-[10px] font-black tracking-[.11em] text-[#496177]">
+    <div role="group" aria-labelledby={labelId}>
+      <p
+        id={labelId}
+        className="mb-3 font-mono text-[10px] font-black tracking-[.11em] text-[#496177]"
+      >
         {label}
       </p>
       <div className="flex flex-wrap gap-2">{children}</div>
@@ -1171,6 +1287,7 @@ function ChoiceButton({
   return (
     <button
       onClick={onClick}
+      aria-pressed={active}
       className={`border px-3 py-2 text-[11px] font-black transition ${active ? "border-[#c7fa42] bg-[#c7fa42] text-[#082a59] shadow-[inset_0_-3px_0_#082a59]" : "border-[#cbd7e0] bg-white text-[#53687b] hover:border-[#082a59]"}`}
       type="button"
     >
@@ -1204,6 +1321,7 @@ function SetCard({
       <h3 className="mt-3 text-2xl font-black tracking-[-.05em]">
         {rubber.name}
       </h3>
+      <DiscontinuedNotice rubber={rubber} />
       <p className="mt-2 text-xs text-[#b8cbe0]">
         {rubber.type} / {rubber.hardness} / 公式確認{" "}
         {verifiedLabel(rubber.verifiedAt)}
@@ -1242,12 +1360,14 @@ function SetCard({
 function AlternativeList({
   title,
   list,
+  sameScoreIds,
   side,
   role,
   onInspect,
 }: {
   title: string;
   list: Rubber[];
+  sameScoreIds: ReadonlySet<string>;
   side: string;
   role: string;
   onInspect: (rubber: Rubber) => void;
@@ -1271,6 +1391,9 @@ function AlternativeList({
                 {rubber.brand}
               </p>
               <p className="mt-1 text-sm font-black">{rubber.name}</p>
+              <p className="mt-1 text-[10px] text-[#68788a]">
+                {sameScoreIds.has(rubber.id) ? "同じ評価の候補" : "次の候補"}
+              </p>
               <p className="mt-1 text-[10px] text-[#68788a]">
                 {formatPriceLabel(rubber.price)} / {rubber.hardness}
               </p>
@@ -1336,6 +1459,7 @@ function CatalogCard({
           <p className="mt-3 text-base font-black tracking-[-.035em]">
             {rubber.name}
           </p>
+          <DiscontinuedNotice rubber={rubber} />
           <p className="mt-1 text-[10px] text-[#68788a]">
             {rubber.type} / {rubber.hardness} / 公式確認{" "}
             {verifiedLabel(rubber.verifiedAt)}
@@ -1391,6 +1515,7 @@ function RubberDetailModal({
   );
   const detailRows: Array<[string, string]> = [
     ["参考価格", formatPriceLabel(rubber.price)],
+    ["原産国", rubber.country ?? "未確認"],
     ["硬度", rubber.hardness],
     ["ラバー種別", rubber.type],
     ["公式情報の確認日", verifiedLabel(rubber.verifiedAt)],
@@ -1447,6 +1572,7 @@ function RubberDetailModal({
             <Dialog.Title className="mt-3 text-4xl font-black leading-[.95] tracking-[-.065em] text-[#082a59]">
               {rubber.name}
             </Dialog.Title>
+            <DiscontinuedNotice rubber={rubber} />
             <p className="mt-3 text-sm leading-6 text-[#5d6f80]">
               {rubber.suitableFor}
             </p>
@@ -1491,6 +1617,7 @@ function RubberDetailModal({
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
             <button
               onClick={onToggleFavorite}
+              aria-pressed={isFavorite}
               className={`inline-flex items-center justify-center gap-2 px-4 py-3 text-xs font-black transition ${isFavorite ? "bg-[#082a59] text-white" : "bg-[#c7fa42] text-[#082a59] hover:bg-[#b9ed32]"}`}
               type="button"
             >
@@ -1556,6 +1683,21 @@ function FavoriteSets({
                     {fore.name} <span className="text-[#1768db]">+</span>{" "}
                     {back.name}
                   </p>
+                  {fore.discontinued && (
+                    <p className="mt-2 text-xs">
+                      フォア：廃番（生産終了を確認）
+                    </p>
+                  )}
+                  {back.discontinued && (
+                    <p className="mt-2 text-xs">
+                      バック：廃番（生産終了を確認）
+                    </p>
+                  )}
+                  {(fore.discontinued || back.discontinued) && (
+                    <p className="mt-2 text-xs">
+                      購入前に在庫を確認してください
+                    </p>
+                  )}
                   <p className="mt-1 text-[10px] text-[#68788a]">
                     フォア：{roleLabel("fore", item.foreRole)} / バック：
                     {roleLabel("back", item.backRole)}
@@ -1616,6 +1758,7 @@ function FavoriteRubbers({
                 {rubber.brand}
               </span>
               <p className="mt-2 text-sm font-black">{rubber.name}</p>
+              <DiscontinuedNotice rubber={rubber} />
               <p className="mt-1 text-[10px] text-[#68788a]">
                 {formatPriceLabel(rubber.price)} / {rubber.hardness} /{" "}
                 {rubber.type}
@@ -1644,6 +1787,24 @@ function FavoriteRubbers({
     </div>
   );
 }
+function TieNotice({ side, count }: { side: string; count: number }) {
+  return count > 1 ? (
+    <p className="mt-3 text-xs leading-5 text-[#365c82]">
+      {side}：同じ評価の候補が他に{count - 1}
+      件あります。表示中の製品はその中の一例です。
+    </p>
+  ) : null;
+}
+
+function DiscontinuedNotice({ rubber }: { rubber: Rubber }) {
+  return rubber.discontinued === true ? (
+    <div className="mt-2 text-xs font-bold">
+      <p>廃番（生産終了を確認）</p>
+      <p>購入前に在庫を確認してください</p>
+    </div>
+  ) : null;
+}
+
 function Tip({ no, title, text }: { no: string; title: string; text: string }) {
   return (
     <article className="relative overflow-hidden bg-[#f8faf8] p-6">

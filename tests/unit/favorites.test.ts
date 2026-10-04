@@ -67,7 +67,7 @@ describe("resolveDisplayedSet（BUG-02）", () => {
 
   it("pinnedSet が無ければ現在の提案を返す", () => {
     const result = resolveDisplayedSet(suggestion, null, catalog);
-    expect([result.fore.id, result.back.id, result.pinned]).toEqual([
+    expect([result?.fore.id, result?.back.id, result?.pinned]).toEqual([
       "a",
       "b",
       false,
@@ -80,7 +80,7 @@ describe("resolveDisplayedSet（BUG-02）", () => {
       { foreId: "c", backId: "d" },
       catalog
     );
-    expect([result.fore.id, result.back.id, result.pinned]).toEqual([
+    expect([result?.fore.id, result?.back.id, result?.pinned]).toEqual([
       "c",
       "d",
       true,
@@ -93,10 +93,33 @@ describe("resolveDisplayedSet（BUG-02）", () => {
       { foreId: "gone", backId: "d" },
       catalog
     );
-    expect([result.fore.id, result.back.id, result.pinned]).toEqual([
+    expect([result?.fore.id, result?.back.id, result?.pinned]).toEqual([
       "a",
       "b",
       false,
     ]);
+  });
+  it("現在の推薦が不足でも保存した廃番製品を保持する", () => {
+    const historical = [{ ...catalog[0], discontinued: true }, catalog[1]];
+    const result = resolveDisplayedSet(
+      null,
+      { foreId: "a", backId: "b" },
+      historical
+    );
+    expect(result?.fore.discontinued).toBe(true);
+    expect(result?.pinned).toBe(true);
+    expect(
+      pruneFavorites(
+        ["a"],
+        [savedSet("saved", "a", "b")],
+        new Set(historical.map(r => r.id))
+      ).sets
+    ).toHaveLength(1);
+  });
+  it("推薦も解決できる保存セットも無ければnull", () => {
+    expect(resolveDisplayedSet(null, null, catalog)).toBeNull();
+    expect(
+      resolveDisplayedSet(null, { foreId: "gone", backId: "b" }, catalog)
+    ).toBeNull();
   });
 });

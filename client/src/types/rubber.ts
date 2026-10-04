@@ -22,6 +22,8 @@ export type Rubber = {
   price: number | null;
   hardness: Hardness;
   country?: string;
+  /** 公式の生産終了を確認した場合のみ true。省略は未確認。IDは保持する。 */
+  discontinued?: boolean;
   speed: number;
   spin: number;
   control: number;

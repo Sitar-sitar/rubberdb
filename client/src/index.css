@@ -1,11 +1,71 @@
 /* 卓球ラバー図鑑 / Court Tempo — コートネイビー、クレイコーラル、ライムのスコアマーカーで、提案への短い進行をつくる。 */
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
-@theme inline { --font-sans:"Noto Sans JP",sans-serif; --font-display:"Barlow Condensed","Noto Sans JP",sans-serif; --color-background:var(--background); --color-foreground:var(--foreground); --color-primary:var(--primary); --color-primary-foreground:var(--primary-foreground); --color-border:var(--border); --color-input:var(--input); --color-ring:var(--ring); }
-:root { --background:oklch(.98 .005 100); --foreground:oklch(.23 .04 252); --primary:oklch(.31 .08 250); --primary-foreground:oklch(1 0 0); --border:oklch(.88 .014 245); --input:oklch(.88 .014 245); --ring:oklch(.78 .19 125); }
-@layer base { * { @apply border-border outline-ring/50; } html{scroll-behavior:smooth} body { @apply bg-background text-foreground font-sans; } button:not(:disabled),a[href],select:not(:disabled),input { @apply cursor-pointer; } }
-@media (prefers-reduced-motion:no-preference){button:active{transform:scale(.97)}}
+@theme inline {
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-display: "Barlow Condensed", "Noto Sans JP", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+:root {
+  --background: oklch(0.98 0.005 100);
+  --foreground: oklch(0.23 0.04 252);
+  --primary: oklch(0.31 0.08 250);
+  --primary-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.014 245);
+  --input: oklch(0.88 0.014 245);
+  --ring: oklch(0.78 0.19 125);
+}
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  button:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input {
+    @apply cursor-pointer;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  button:active {
+    transform: scale(0.97);
+  }
+}
 /* 詳細モーダルの入場。Home.tsx の animate-[slideIn_...] が参照する（修正設計書 2026-10-01 BUG-05）。 */
-@keyframes slideIn { from { transform:translateX(24px); opacity:0 } to { transform:none; opacity:1 } }
+@keyframes slideIn {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+/* 選択・検索・モーダルをキーボードで辿るときの共通表示。 */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #1768db;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

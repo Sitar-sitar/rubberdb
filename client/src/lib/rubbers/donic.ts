@@ -232,6 +232,7 @@ const rubbers: RubberEntry[] = [
     type: "アンチ",
     price: 5720,
     hardness: "—",
+    country: "中国",
     speed: 1,
     spin: 1,
     control: 5,
