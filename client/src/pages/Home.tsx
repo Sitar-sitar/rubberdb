@@ -49,7 +49,13 @@ import {
   resolveDisplayedSet,
   type PinnedSet,
 } from "@/utils/favorites";
-import { sideScore, suggestSet } from "@/utils/recommend";
+import {
+  sideScore,
+  suggestSet,
+  suggestOppositeSide,
+  type DiagnosisMode,
+  type Side,
+} from "@/utils/recommend";
 import {
   backOptions,
   foreOptions,
@@ -99,6 +105,9 @@ export default function Home() {
   const [backRole, setBackRole] = useState<Role>("control");
   const [level, setLevel] = useState<Level>("beginner");
   const [budget, setBudget] = useState<Budget>("standard");
+  const [mode, setMode] = useState<DiagnosisMode>("both");
+  const [fixedRubberId, setFixedRubberId] = useState<string | null>(null);
+  const [fixedQuery, setFixedQuery] = useState("");
   const [showAlternatives, setShowAlternatives] = useState(false);
   const [detail, setDetail] = useState<{
     rubber: Rubber;
@@ -159,10 +168,36 @@ export default function Home() {
       ),
     []
   );
-  const suggestion = useMemo(
-    () => suggestSet(rubbers, { foreRole, backRole, level, budget }),
-    [backRole, budget, foreRole, level]
-  );
+  const fixedSide: Side = mode === "fixedBack" ? "back" : "fore";
+  const fixedSideLabel = fixedSide === "fore" ? "フォア" : "バック";
+  const oppositeSideLabel = fixedSide === "fore" ? "バック" : "フォア";
+  const fixedRubber = rubbers.find(rubber => rubber.id === fixedRubberId);
+  const fixedMatches = useMemo(() => {
+    const query = fixedQuery.trim().toLowerCase();
+    return rubbers
+      .filter(rubber =>
+        `${rubber.brand} ${rubber.name}`.toLowerCase().includes(query)
+      )
+      .sort(
+        (a, b) =>
+          a.brand.localeCompare(b.brand, "ja") ||
+          a.name.localeCompare(b.name, "ja") ||
+          (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
+      );
+  }, [fixedQuery]);
+  const fixedOptions =
+    fixedRubber && !fixedMatches.some(r => r.id === fixedRubber.id)
+      ? [fixedRubber, ...fixedMatches]
+      : fixedMatches;
+  const suggestion = useMemo(() => {
+    const conditions = { foreRole, backRole, level, budget };
+    return mode === "both"
+      ? suggestSet(rubbers, conditions)
+      : suggestOppositeSide(rubbers, conditions, {
+          side: fixedSide,
+          rubberId: fixedRubberId,
+        });
+  }, [backRole, budget, foreRole, level, mode, fixedSide, fixedRubberId]);
   // 保存セットの再確認中は、現在の提案ではなく保存時の 2 枚を表示する（BUG-02）。
   const displayedSet = useMemo(
     () =>
@@ -175,11 +210,46 @@ export default function Home() {
   );
   const fore = displayedSet?.fore ?? null;
   const back = displayedSet?.back ?? null;
-  const pinnedDiffersFromSuggestion =
-    displayedSet?.pinned &&
-    (suggestion.status === "insufficient" ||
-      fore?.id !== suggestion.fore.id ||
-      back?.id !== suggestion.back.id);
+  const comparisonPanels =
+    suggestion.status !== "ready" || displayedSet?.pinned
+      ? []
+      : "recommendedSide" in suggestion
+        ? [
+            {
+              side: suggestion.recommendedSide,
+              selected: suggestion[suggestion.recommendedSide],
+              alternatives: suggestion.recommendedAlternatives,
+              tieCount: suggestion.recommendedTopTieCount,
+            },
+          ]
+        : [
+            {
+              side: "fore" as const,
+              selected: suggestion.fore,
+              alternatives: suggestion.foreAlternatives,
+              tieCount: suggestion.foreTopTieCount,
+            },
+            {
+              side: "back" as const,
+              selected: suggestion.back,
+              alternatives: suggestion.backAlternatives,
+              tieCount: suggestion.backTopTieCount,
+            },
+          ];
+  const hasComparisons = comparisonPanels.some(
+    panel => panel.alternatives.length > 0
+  );
+  const resultSummary = displayedSet?.pinned
+    ? `保存した組み合わせ：フォア ${fore?.name}、バック ${back?.name}`
+    : suggestion.status === "ready"
+      ? `フォア ${suggestion.fore.name}、バック ${suggestion.back.name}${mode === "both" ? "をおすすめします" : `。${fixedSideLabel}は指定品、${oppositeSideLabel}をおすすめします`}`
+      : suggestion.status === "awaitingSelection"
+        ? `${fixedSideLabel}に使うラバーを選ぶと、${oppositeSideLabel}のおすすめを表示します`
+        : suggestion.status === "invalidFixed"
+          ? "指定したラバーが見つかりません。ラバーを選び直してください"
+          : mode === "both"
+            ? "条件に合う製品が2枚そろいません"
+            : `${oppositeSideLabel}の条件に合うラバーがありません`;
   const setPrice = useMemo(
     () => (fore && back ? calcSetPrice([fore, back]) : null),
     [back, fore]
@@ -203,6 +273,9 @@ export default function Home() {
     saveFavoriteSets(favoriteSets);
   }, [favoriteSets]);
   const reset = () => {
+    setMode("both");
+    setFixedRubberId(null);
+    setFixedQuery("");
     setHandedness("right");
     setForeRole("spin");
     setBackRole("control");
@@ -210,6 +283,14 @@ export default function Home() {
     setBudget("standard");
     setShowAlternatives(false);
     setPinnedSet(null);
+  };
+  const changeMode = (next: DiagnosisMode) => {
+    if (next === mode) return;
+    if (next === "both" || mode === "both") setFixedRubberId(null);
+    setMode(next);
+    setFixedQuery("");
+    setPinnedSet(null);
+    setShowAlternatives(false);
   };
   const toggleFavoriteRubber = (id: string) =>
     setFavoriteRubberIds(current =>
@@ -239,6 +320,9 @@ export default function Home() {
     );
   };
   const restoreSet = (saved: SavedSet) => {
+    setMode("both");
+    setFixedRubberId(null);
+    setFixedQuery("");
     setHandedness(saved.handedness);
     setForeRole(saved.foreRole);
     setBackRole(saved.backRole);
@@ -248,15 +332,13 @@ export default function Home() {
     setPinnedSet({ foreId: saved.foreId, backId: saved.backId });
     window.setTimeout(
       () =>
-        document
-          .getElementById("result")
-          ?.scrollIntoView({
-            behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
-              .matches
-              ? "auto"
-              : "smooth",
-            block: "start",
-          }),
+        document.getElementById("result")?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        }),
       0
     );
   };
@@ -410,7 +492,116 @@ export default function Home() {
               フォアは得点のために、バックは次の一球のために。片面ずつ役割を選ぶと、セット全体のバランスが見えてきます。
             </p>
           </div>
-          <div className="mt-8 grid gap-4 lg:grid-cols-[.78fr_1.1fr_1.1fr]">
+          <div className="mt-8 border border-[#d6e0e7] bg-white p-5">
+            <ChoiceGroup label="診断方法">
+              <ChoiceButton
+                active={mode === "both"}
+                onClick={() => changeMode("both")}
+                title="両面をおすすめ"
+              />
+              <ChoiceButton
+                active={mode === "fixedFore"}
+                onClick={() => changeMode("fixedFore")}
+                title="フォアを指定"
+              />
+              <ChoiceButton
+                active={mode === "fixedBack"}
+                onClick={() => changeMode("fixedBack")}
+                title="バックを指定"
+              />
+            </ChoiceGroup>
+            {mode !== "both" && (
+              <div className="mt-5 grid min-w-0 gap-4 md:grid-cols-2">
+                <div className="min-w-0">
+                  <label
+                    htmlFor="fixed-rubber-search"
+                    className="block text-xs font-bold"
+                  >
+                    指定するラバーを検索
+                  </label>
+                  <input
+                    id="fixed-rubber-search"
+                    type="search"
+                    value={fixedQuery}
+                    onChange={event => setFixedQuery(event.target.value)}
+                    placeholder="商品名・ブランド"
+                    className="mt-2 w-full min-w-0 border border-[#cbd7e0] p-3 text-sm"
+                  />
+                  <p
+                    role="status"
+                    aria-label="指定ラバーの検索結果"
+                    aria-live="polite"
+                    className="mt-2 text-xs text-[#657487]"
+                  >
+                    {fixedMatches.length}件が見つかりました
+                  </p>
+                  {fixedMatches.length === 0 && (
+                    <p className="mt-2 text-xs">
+                      一致するラバーがありません。{" "}
+                      <button
+                        type="button"
+                        onClick={() => setFixedQuery("")}
+                        className="underline"
+                      >
+                        検索条件を消す
+                      </button>
+                    </p>
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <label
+                    htmlFor="fixed-rubber-select"
+                    className="block text-xs font-bold"
+                  >
+                    {fixedSideLabel}に使うラバー
+                  </label>
+                  <select
+                    id="fixed-rubber-select"
+                    value={fixedRubberId ?? ""}
+                    onChange={event => {
+                      setFixedRubberId(event.target.value || null);
+                      setPinnedSet(null);
+                      setShowAlternatives(false);
+                    }}
+                    className="mt-2 w-full min-w-0 border border-[#cbd7e0] bg-white p-3 text-sm"
+                  >
+                    <option value="">ラバーを選択してください</option>
+                    {fixedOptions.map(rubber => (
+                      <option key={rubber.id} value={rubber.id}>
+                        {rubber.brand} / {rubber.name}
+                        {rubber.discontinued ? "（廃番）" : ""}
+                      </option>
+                    ))}
+                  </select>
+                  {fixedRubber && (
+                    <div className="mt-3 border-l-4 border-[#c7fa42] bg-[#f3f7fa] p-3 text-sm">
+                      <p className="break-words font-bold">
+                        指定品：{fixedRubber.brand} / {fixedRubber.name}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setDetail({
+                            rubber: fixedRubber,
+                            side:
+                              fixedSide === "fore" ? "FOREHAND" : "BACKHAND",
+                            role: roleLabel(
+                              fixedSide,
+                              fixedSide === "fore" ? foreRole : backRole
+                            ),
+                          })
+                        }
+                        className="mt-2 text-xs underline"
+                      >
+                        指定したラバーの詳細を開く
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="mt-4 grid gap-4 lg:grid-cols-[.78fr_1.1fr_1.1fr]">
             <QuestionPanel
               step="01"
               title="利き手"
@@ -434,7 +625,11 @@ export default function Home() {
             <QuestionPanel
               step="02"
               title="フォアハンド"
-              description="フォアで、どんな球を武器にしたいですか？"
+              description={
+                mode === "fixedFore"
+                  ? "この面の役割は説明用です。指定した製品は変わりません"
+                  : "フォアで、どんな球を武器にしたいですか？"
+              }
             >
               <RoleGrid
                 options={foreOptions}
@@ -449,7 +644,11 @@ export default function Home() {
             <QuestionPanel
               step="03"
               title="バックハンド"
-              description="バックで、何を安定させたいですか？"
+              description={
+                mode === "fixedBack"
+                  ? "この面の役割は説明用です。指定した製品は変わりません"
+                  : "バックで、何を安定させたいですか？"
+              }
             >
               <RoleGrid
                 options={backOptions}
@@ -469,6 +668,7 @@ export default function Home() {
                 onClick={() => {
                   setLevel("beginner");
                   setPinnedSet(null);
+                  setShowAlternatives(false);
                 }}
                 title="はじめて〜基礎練習中"
               />
@@ -477,19 +677,27 @@ export default function Home() {
                 onClick={() => {
                   setLevel("middle");
                   setPinnedSet(null);
+                  setShowAlternatives(false);
                 }}
                 title="試合に少し慣れてきた"
               />
             </ChoiceGroup>
             <ChoiceGroup
-              label="片面あたりの予算"
-              note="予算を指定すると、オープン価格（価格未公表）の製品は候補から除きます。"
+              label={
+                mode === "both" ? "片面あたりの予算" : "おすすめする面の予算"
+              }
+              note={
+                mode === "both"
+                  ? "予算を指定すると、オープン価格（価格未公表）の製品は候補から除きます。"
+                  : "指定したラバーには予算制限を適用しません。おすすめする面は、予算指定時に価格未公表の製品を除きます。"
+              }
             >
               <ChoiceButton
                 active={budget === "easy"}
                 onClick={() => {
                   setBudget("easy");
                   setPinnedSet(null);
+                  setShowAlternatives(false);
                 }}
                 title="6,000円まで"
               />
@@ -498,6 +706,7 @@ export default function Home() {
                 onClick={() => {
                   setBudget("standard");
                   setPinnedSet(null);
+                  setShowAlternatives(false);
                 }}
                 title="8,000円まで"
               />
@@ -506,6 +715,7 @@ export default function Home() {
                 onClick={() => {
                   setBudget("free");
                   setPinnedSet(null);
+                  setShowAlternatives(false);
                 }}
                 title="こだわらない"
               />
@@ -523,6 +733,15 @@ export default function Home() {
           id="result"
           className="relative overflow-hidden bg-[#edf4fa] px-5 py-20 [background-image:linear-gradient(rgba(8,42,89,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(8,42,89,.06)_1px,transparent_1px)] [background-size:30px_30px]"
         >
+          <p
+            role="status"
+            aria-label="診断結果"
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {resultSummary}
+          </p>
           {fore && back && setPrice ? (
             <div className="relative mx-auto max-w-[1240px]">
               <div className="grid gap-8 md:grid-cols-[1fr_290px] md:items-end">
@@ -544,11 +763,22 @@ export default function Home() {
                     <strong className="text-[#082a59]">
                       {roleLabel("back", backRole)}
                     </strong>{" "}
-                    を優先した組み合わせです。{handText}
+                    {mode === "both" && !displayedSet?.pinned
+                      ? "を優先した組み合わせです。"
+                      : "を役割として選択しています。"}
+                    {handText}
                   </p>
-                  {pinnedDiffersFromSuggestion && (
+                  {mode !== "both" && (
+                    <p className="mt-3 text-xs leading-6 text-[#586d82]">
+                      反対面の役割・経験・予算から選んでいます。ラケットや厚さまで含めた相性を判定するものではありません
+                    </p>
+                  )}
+                  {"fixedRubber" in suggestion && (
+                    <FixedRubberNotice info={suggestion} />
+                  )}
+                  {displayedSet?.pinned && (
                     <p className="mt-4 max-w-2xl border-l-4 border-[#1768db] bg-white px-4 py-3 text-xs font-bold leading-6 text-[#365c82]">
-                      保存したときの組み合わせを表示しています。現在の条件では提案が変わっています。{" "}
+                      保存した組み合わせを表示しています。診断方法は両面おすすめに戻ります。{" "}
                       <button
                         onClick={() => setPinnedSet(null)}
                         className="text-[#1768db] underline underline-offset-4"
@@ -569,6 +799,21 @@ export default function Home() {
                   <p className="mt-1 text-xs font-bold leading-5 text-[#567088]">
                     {setPriceNote(setPrice)}
                   </p>
+                  {mode !== "both" &&
+                    suggestion.status === "ready" &&
+                    "recommendedSide" in suggestion && (
+                      <div className="mt-3 border-t border-[#d7e0e7] pt-3 text-xs leading-5 text-[#567088]">
+                        <p>上記は指定品を含む2枚の参考額です。</p>
+                        <p className="mt-1 font-bold">
+                          今回購入する{oppositeSideLabel}の参考価格：
+                          {suggestion[suggestion.recommendedSide].price === null
+                            ? "価格未確認"
+                            : formatPriceLabel(
+                                suggestion[suggestion.recommendedSide].price
+                              )}
+                        </p>
+                      </div>
+                    )}
                   <button
                     onClick={toggleCurrentSet}
                     aria-pressed={currentSetSaved}
@@ -581,6 +826,11 @@ export default function Home() {
                     />{" "}
                     {currentSetSaved ? "保存済みのセット" : "このセットを保存"}
                   </button>
+                  {mode !== "both" && (
+                    <p className="mt-2 text-[10px] leading-5 text-[#567088]">
+                      2枚の組み合わせと条件を保存します。片面指定の設定は保存されません
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="mt-9 overflow-hidden border border-[#082a59] bg-[#082a59] text-white">
@@ -601,14 +851,25 @@ export default function Home() {
                 <div className="grid lg:grid-cols-[1fr_64px_1fr]">
                   <SetCard
                     side="FOREHAND"
+                    source={
+                      displayedSet?.pinned
+                        ? "保存したラバー"
+                        : mode === "fixedFore"
+                          ? "あなたが指定"
+                          : "おすすめ"
+                    }
                     role={roleLabel("fore", foreRole)}
                     rubber={fore}
                     reason={
-                      foreRole === "spin"
-                        ? "回転と弧線を使って、自分から先に攻めるための一枚。"
-                        : foreRole === "counter"
-                          ? "早い打点で相手の球を押し返し、得点につなげる一枚。"
-                          : "ミスを減らし、ラリーの起点をつくる一枚。"
+                      displayedSet?.pinned
+                        ? "保存した組み合わせのフォアです。"
+                        : mode === "fixedFore"
+                          ? "この面は指定したラバーです"
+                          : foreRole === "spin"
+                            ? "回転と弧線を使って、自分から先に攻めるための一枚。"
+                            : foreRole === "counter"
+                              ? "早い打点で相手の球を押し返し、得点につなげる一枚。"
+                              : "ミスを減らし、ラリーの起点をつくる一枚。"
                     }
                     onInspect={() =>
                       setDetail({
@@ -626,14 +887,25 @@ export default function Home() {
                   <div className="border-t border-white/15 lg:border-l lg:border-t-0">
                     <SetCard
                       side="BACKHAND"
+                      source={
+                        displayedSet?.pinned
+                          ? "保存したラバー"
+                          : mode === "fixedBack"
+                            ? "あなたが指定"
+                            : "おすすめ"
+                      }
                       role={roleLabel("back", backRole)}
                       rubber={back}
                       reason={
-                        backRole === "control"
-                          ? "ブロックと台上を安定させ、次のフォアにつなぐ一枚。"
-                          : backRole === "counter"
-                            ? "バックでも早く打ち返し、相手を待たせない一枚。"
-                            : "バックでも回転をかけ、両ハンドでラリーを組み立てる一枚。"
+                        displayedSet?.pinned
+                          ? "保存した組み合わせのバックです。"
+                          : mode === "fixedBack"
+                            ? "この面は指定したラバーです"
+                            : backRole === "control"
+                              ? "ブロックと台上を安定させ、次のフォアにつなぐ一枚。"
+                              : backRole === "counter"
+                                ? "バックでも早く打ち返し、相手を待たせない一枚。"
+                                : "バックでも回転をかけ、両ハンドでラリーを組み立てる一枚。"
                       }
                       onInspect={() =>
                         setDetail({
@@ -650,107 +922,137 @@ export default function Home() {
                 <CircleHelp className="mt-0.5 shrink-0" size={15} />{" "}
                 提案は公式価格・種別と、サイト内の性能傾向を使った選択支援です。点数はサイト内の目安で、公式の性能順位ではありません。厚さやラケットとの相性によって打球感は変わります。
               </p>
-              {suggestion.status === "ready" &&
-                !pinnedDiffersFromSuggestion && (
-                  <>
-                    <TieNotice
-                      side="フォア"
-                      count={suggestion.foreTopTieCount}
-                    />
-                    <TieNotice
-                      side="バック"
-                      count={suggestion.backTopTieCount}
-                    />
-                    <div className="mt-8 text-center">
-                      <button
-                        onClick={() => setShowAlternatives(value => !value)}
-                        aria-expanded={showAlternatives}
-                        aria-controls="set-alternatives"
-                        className="inline-flex items-center gap-2 border border-[#082a59] bg-white px-5 py-3 text-xs font-black text-[#082a59] transition hover:bg-[#082a59] hover:text-white"
-                        type="button"
-                      >
-                        {showAlternatives
-                          ? "ほかの組み合わせを閉じる"
-                          : "ほかの候補も比べる"}{" "}
-                        <ChevronRight
-                          className={showAlternatives ? "rotate-90" : ""}
-                          size={15}
-                        />
-                      </button>
-                    </div>
-                    <div
-                      id="set-alternatives"
-                      hidden={!showAlternatives}
-                      className={
-                        showAlternatives
-                          ? "mt-5 grid gap-4 md:grid-cols-2"
-                          : undefined
-                      }
+              {comparisonPanels.map(panel => (
+                <TieNotice
+                  key={panel.side}
+                  side={panel.side === "fore" ? "フォア" : "バック"}
+                  count={panel.tieCount}
+                />
+              ))}
+              {comparisonPanels.length > 0 && !hasComparisons && (
+                <p className="mt-4 text-xs text-[#607389]">
+                  ほかの候補はありません
+                </p>
+              )}
+              {hasComparisons && (
+                <>
+                  <div className="mt-8 text-center">
+                    <button
+                      onClick={() => setShowAlternatives(value => !value)}
+                      aria-expanded={showAlternatives}
+                      aria-controls="set-alternatives"
+                      className="inline-flex items-center gap-2 border border-[#082a59] bg-white px-5 py-3 text-xs font-black text-[#082a59] transition hover:bg-[#082a59] hover:text-white"
+                      type="button"
                     >
-                      <AlternativeList
-                        title="フォアの候補"
-                        list={suggestion.foreAlternatives}
-                        sameScoreIds={
-                          new Set(
-                            suggestion.foreAlternatives
-                              .filter(
-                                rubber =>
-                                  sideScore(rubber, foreRole, level) ===
-                                  sideScore(suggestion.fore, foreRole, level)
-                              )
-                              .map(rubber => rubber.id)
-                          )
-                        }
-                        side="FOREHAND"
-                        role={roleLabel("fore", foreRole)}
-                        onInspect={rubber =>
-                          setDetail({
-                            rubber,
-                            side: "FOREHAND",
-                            role: roleLabel("fore", foreRole),
-                          })
-                        }
+                      {showAlternatives
+                        ? "ほかの組み合わせを閉じる"
+                        : "ほかの候補も比べる"}{" "}
+                      <ChevronRight
+                        className={showAlternatives ? "rotate-90" : ""}
+                        size={15}
                       />
-                      <AlternativeList
-                        title="バックの候補"
-                        list={suggestion.backAlternatives}
-                        sameScoreIds={
-                          new Set(
-                            suggestion.backAlternatives
-                              .filter(
-                                rubber =>
-                                  sideScore(rubber, backRole, level) ===
-                                  sideScore(suggestion.back, backRole, level)
-                              )
-                              .map(rubber => rubber.id)
-                          )
-                        }
-                        side="BACKHAND"
-                        role={roleLabel("back", backRole)}
-                        onInspect={rubber =>
-                          setDetail({
-                            rubber,
-                            side: "BACKHAND",
-                            role: roleLabel("back", backRole),
-                          })
-                        }
-                      />
-                    </div>
-                  </>
-                )}
+                    </button>
+                  </div>
+                  <div
+                    id="set-alternatives"
+                    hidden={!showAlternatives}
+                    className={
+                      showAlternatives
+                        ? `mt-5 grid gap-4 ${mode === "both" ? "md:grid-cols-2" : ""}`
+                        : undefined
+                    }
+                  >
+                    {comparisonPanels.map(panel => {
+                      const role = panel.side === "fore" ? foreRole : backRole;
+                      return (
+                        <AlternativeList
+                          key={panel.side}
+                          title={
+                            panel.side === "fore"
+                              ? "フォアの候補"
+                              : "バックの候補"
+                          }
+                          list={panel.alternatives}
+                          sameScoreIds={
+                            new Set(
+                              panel.alternatives
+                                .filter(
+                                  rubber =>
+                                    sideScore(rubber, role, level) ===
+                                    sideScore(panel.selected, role, level)
+                                )
+                                .map(rubber => rubber.id)
+                            )
+                          }
+                          side={panel.side === "fore" ? "FOREHAND" : "BACKHAND"}
+                          role={roleLabel(panel.side, role)}
+                          onInspect={rubber =>
+                            setDetail({
+                              rubber,
+                              side:
+                                panel.side === "fore" ? "FOREHAND" : "BACKHAND",
+                              role: roleLabel(panel.side, role),
+                            })
+                          }
+                        />
+                      );
+                    })}
+                  </div>
+                </>
+              )}
             </div>
           ) : (
             <div className="relative mx-auto max-w-[1240px] border border-[#cbd8e1] bg-white p-6">
-              <h2 className="text-2xl font-black">
-                条件に合う製品が2枚そろいません
-              </h2>
-              <p className="mt-3">
-                該当する製品は{" "}
-                {suggestion.status === "insufficient"
-                  ? suggestion.candidateCount
-                  : 0}{" "}
-                件です。予算を選び直すか、カタログで製品を確認してください。
-              </p>
+              <h2 className="text-2xl font-black">{resultSummary}</h2>
+              {mode === "both" ? (
+                <p className="mt-3">
+                  該当する製品は{" "}
+                  {suggestion.status === "insufficient"
+                    ? suggestion.candidateCount
+                    : 0}{" "}
+                  件です。予算を選び直すか、カタログで製品を確認してください。
+                </p>
+              ) : (
+                <>
+                  {"fixedRubber" in suggestion && (
+                    <div className="mt-4">
+                      <div className="bg-[#082a59] text-white">
+                        <SetCard
+                          side={fixedSide === "fore" ? "FOREHAND" : "BACKHAND"}
+                          source="あなたが指定"
+                          role={roleLabel(
+                            fixedSide,
+                            fixedSide === "fore" ? foreRole : backRole
+                          )}
+                          rubber={suggestion.fixedRubber}
+                          reason="この面は指定したラバーです"
+                          onInspect={() =>
+                            setDetail({
+                              rubber: suggestion.fixedRubber,
+                              side:
+                                fixedSide === "fore" ? "FOREHAND" : "BACKHAND",
+                              role: roleLabel(
+                                fixedSide,
+                                fixedSide === "fore" ? foreRole : backRole
+                              ),
+                            })
+                          }
+                        />
+                      </div>
+                      <FixedRubberNotice info={suggestion} />
+                      <p className="mt-3 text-sm">
+                        おすすめ候補0件。予算を変更するか、指定品を選び直してください。
+                      </p>
+                    </div>
+                  )}
+                  <a
+                    href="#fixed-rubber-select"
+                    className="mt-4 inline-block text-[#0c477b] underline"
+                  >
+                    指定品を選び直す
+                  </a>
+                </>
+              )}
               <div className="mt-4 flex flex-wrap gap-4 text-[#0c477b] underline">
                 <a href="#diagnose">予算を選び直す</a>
                 <a href="#catalog">カタログを見る</a>
@@ -836,6 +1138,7 @@ export default function Home() {
                 </p>
                 <p
                   role="status"
+                  aria-label="カタログの検索結果"
                   aria-live="polite"
                   className="mt-1 text-sm text-[#64778b]"
                 >
@@ -1297,28 +1600,34 @@ function ChoiceButton({
 }
 function SetCard({
   side,
+  source,
   role,
   rubber,
   reason,
   onInspect,
 }: {
   side: string;
+  source: string;
   role: string;
   rubber: Rubber;
   reason: string;
   onInspect: () => void;
 }) {
   return (
-    <article className="p-6">
+    <article
+      aria-label={side === "FOREHAND" ? "フォアのラバー" : "バックのラバー"}
+      className="min-w-0 p-6"
+    >
       <p className="font-mono text-[10px] font-black tracking-[.13em] text-[#c7fa42]">
         {side} / {role}
       </p>
+      <p className="mt-2 text-xs font-bold text-[#c7fa42]">{source}</p>
       <span
         className={`mt-4 inline-block px-2 py-1 text-[9px] font-black tracking-[.08em] ${brandTint[rubber.brand]}`}
       >
         {rubber.brand}
       </span>
-      <h3 className="mt-3 text-2xl font-black tracking-[-.05em]">
+      <h3 className="mt-3 break-words text-2xl font-black tracking-[-.05em]">
         {rubber.name}
       </h3>
       <DiscontinuedNotice rubber={rubber} />
@@ -1355,6 +1664,31 @@ function SetCard({
         </div>
       </div>
     </article>
+  );
+}
+function FixedRubberNotice({
+  info,
+}: {
+  info: {
+    fixedDiscontinued: boolean;
+    fixedPriceUnknown: boolean;
+    fixedOverBudget: boolean;
+  };
+}) {
+  return (
+    <div className="mt-3 space-y-1 text-xs leading-6 text-[#586d82]">
+      {info.fixedDiscontinued && (
+        <p>
+          指定品は廃番です。手持ちの使用を想定しています。購入する場合は在庫を確認してください
+        </p>
+      )}
+      {info.fixedPriceUnknown && <p>指定品の価格は未確認です</p>}
+      {info.fixedOverBudget && (
+        <p>
+          指定品は選択予算を超えています。予算はおすすめする面だけに適用しています
+        </p>
+      )}
+    </div>
   );
 }
 function AlternativeList({

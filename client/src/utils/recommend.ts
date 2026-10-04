@@ -61,6 +61,31 @@ export type SetConditions = {
   budget: Budget;
 };
 
+export type DiagnosisMode = "both" | "fixedFore" | "fixedBack";
+export type Side = "fore" | "back";
+
+type ValidFixedSuggestion = ExcludedCounts & {
+  fixedSide: Side;
+  fixedRubber: Rubber;
+  recommendedSide: Side;
+  fixedDiscontinued: boolean;
+  fixedPriceUnknown: boolean;
+  fixedOverBudget: boolean;
+};
+
+export type OppositeSideSuggestion =
+  | { status: "awaitingSelection"; fixedSide: Side }
+  | { status: "invalidFixed"; fixedSide: Side; fixedRubberId: string }
+  | (ValidFixedSuggestion & { status: "insufficient"; candidateCount: 0 })
+  | (ValidFixedSuggestion & {
+      status: "ready";
+      fore: Rubber;
+      back: Rubber;
+      recommendedList: Rubber[];
+      recommendedAlternatives: Rubber[];
+      recommendedTopTieCount: number;
+    });
+
 type ExcludedCounts = {
   excludedUnknownPriceCount: number;
   excludedDiscontinuedCount: number;
@@ -176,6 +201,63 @@ export function suggestSet(
     backTopTieCount: backList.filter(
       rubber =>
         sideScore(rubber, backRole, level) === sideScore(back, backRole, level)
+    ).length,
+  };
+}
+
+/** 手持ちの指定品を保持し、反対面だけを既存基準で推薦する。 */
+export function suggestOppositeSide(
+  catalog: Rubber[],
+  conditions: SetConditions,
+  fixed: { side: Side; rubberId: string | null }
+): OppositeSideSuggestion {
+  const { side: fixedSide, rubberId } = fixed;
+  if (!rubberId) return { status: "awaitingSelection", fixedSide };
+  const fixedRubber = catalog.find(rubber => rubber.id === rubberId);
+  if (!fixedRubber)
+    return { status: "invalidFixed", fixedSide, fixedRubberId: rubberId };
+
+  const { foreRole, backRole, level, budget } = conditions;
+  const recommendedSide = fixedSide === "fore" ? "back" : "fore";
+  const role = recommendedSide === "fore" ? foreRole : backRole;
+  const population = catalog.filter(rubber => rubber.id !== rubberId);
+  const available = population.filter(rubber => rubber.discontinued !== true);
+  const limit = BUDGET_LIMITS[budget];
+  const info: ValidFixedSuggestion = {
+    fixedSide,
+    fixedRubber,
+    recommendedSide,
+    fixedDiscontinued: fixedRubber.discontinued === true,
+    fixedPriceUnknown: fixedRubber.price === null,
+    fixedOverBudget:
+      limit !== null && fixedRubber.price !== null && fixedRubber.price > limit,
+    excludedDiscontinuedCount: population.length - available.length,
+    excludedUnknownPriceCount:
+      limit === null
+        ? 0
+        : available.filter(rubber => rubber.price === null).length,
+  };
+  const candidates = available.filter(rubber => withinBudget(rubber, budget));
+  if (candidates.length === 0)
+    return { status: "insufficient", candidateCount: 0, ...info };
+
+  const recommendedList = rank(candidates, role, level);
+  const recommended = recommendedList[0];
+  return {
+    status: "ready",
+    ...info,
+    fore: fixedSide === "fore" ? fixedRubber : recommended,
+    back: fixedSide === "back" ? fixedRubber : recommended,
+    recommendedList,
+    recommendedAlternatives: comparisonAlternatives(
+      recommendedList,
+      role,
+      level,
+      new Set([rubberId, recommended.id])
+    ),
+    recommendedTopTieCount: recommendedList.filter(
+      rubber =>
+        sideScore(rubber, role, level) === sideScore(recommended, role, level)
     ).length,
   };
 }
