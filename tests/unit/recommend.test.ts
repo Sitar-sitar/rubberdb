@@ -7,6 +7,7 @@ import {
   suggestSet,
   withinBudget,
   sideScore,
+  suggestOppositeSide,
   type SetSuggestion,
   type ReadySetSuggestion,
 } from "@/utils/recommend";
@@ -35,6 +36,246 @@ describe("withinBudget", () => {
 
   it("こだわらない場合はオープン価格も候補に含める", () => {
     expect(withinBudget(rubberWithPrice(null), "free")).toBe(true);
+  });
+});
+
+describe("片面指定・反対面推薦", () => {
+  it("未選択と不存在IDを区別し、代替品を固定しない", () => {
+    for (const rubberId of [null, ""])
+      expect(
+        suggestOppositeSide([], conditions, { side: "fore", rubberId })
+      ).toEqual({ status: "awaitingSelection", fixedSide: "fore" });
+    expect(
+      suggestOppositeSide([], conditions, { side: "back", rubberId: "missing" })
+    ).toEqual({
+      status: "invalidFixed",
+      fixedSide: "back",
+      fixedRubberId: "missing",
+    });
+  });
+
+  it.each(["fore", "back"] as const)(
+    "%s固定では反対面1件でも推薦し、固定品だけなら不足",
+    side => {
+      const fixed = fixture("fixed", "Butterfly", {
+        price: 9000,
+        discontinued: true,
+      });
+      const catalog = [fixed, fixture("candidate")];
+      const result = suggestOppositeSide(catalog, conditions, {
+        side,
+        rubberId: fixed.id,
+      });
+      expect(result.status).toBe("ready");
+      if (result.status !== "ready") throw new Error("Expected ready");
+      expect(result[side]).toBe(fixed);
+      expect(result[result.recommendedSide].id).toBe("candidate");
+      expect(result.fixedDiscontinued).toBe(true);
+      expect(result.fixedOverBudget).toBe(true);
+      expect(result.recommendedAlternatives).toEqual([]);
+      expect(result.recommendedTopTieCount).toBe(1);
+      const insufficient = suggestOppositeSide([fixed], conditions, {
+        side,
+        rubberId: fixed.id,
+      });
+      expect(insufficient.status).toBe("insufficient");
+      expect(insufficient).toMatchObject({
+        fixedRubber: fixed,
+        candidateCount: 0,
+      });
+      expect("fore" in insufficient).toBe(false);
+    }
+  );
+
+  it("指定品を除外件数に含めず廃番を先に除外する", () => {
+    const catalog = [
+      fixture("fixed", "Butterfly", { price: null, discontinued: true }),
+      fixture("old", "Nittaku", { price: null, discontinued: true }),
+      fixture("unknown", "Nittaku", { price: null }),
+      fixture("expensive", "Butterfly", { price: 8001 }),
+    ];
+    const limited = suggestOppositeSide(catalog, conditions, {
+      side: "fore",
+      rubberId: "fixed",
+    });
+    expect(limited).toMatchObject({
+      status: "insufficient",
+      fixedDiscontinued: true,
+      fixedPriceUnknown: true,
+      fixedOverBudget: false,
+      excludedDiscontinuedCount: 1,
+      excludedUnknownPriceCount: 1,
+    });
+    const free = suggestOppositeSide(
+      catalog,
+      { ...conditions, budget: "free" },
+      { side: "fore", rubberId: "fixed" }
+    );
+    expect(free).toMatchObject({
+      status: "ready",
+      fixedOverBudget: false,
+      excludedUnknownPriceCount: 0,
+      excludedDiscontinuedCount: 1,
+    });
+  });
+
+  it.each([
+    ["easy", 6000],
+    ["standard", 8000],
+  ] as const)("%sの上限価格ちょうどを含み1円超過を除く", (budget, limit) => {
+    const catalog = [
+      fixture("fixed", "Butterfly", { price: null }),
+      fixture("limit", "Nittaku", { price: limit }),
+      fixture("over", "Nittaku", { price: limit + 1 }),
+    ];
+    const result = suggestOppositeSide(
+      catalog,
+      { ...conditions, budget },
+      { side: "back", rubberId: "fixed" }
+    );
+    expect(result.status).toBe("ready");
+    if (result.status !== "ready") throw new Error("Expected ready");
+    expect(result.fore.id).toBe("limit");
+    expect(result.recommendedList.map(r => r.id)).toEqual(["limit"]);
+  });
+
+  it("同点はID順で採用し、比較のみ同点内ブランドを巡回し、配列を変更しない", () => {
+    const catalog = [
+      fixture("fixed"),
+      fixture("e", "Nittaku"),
+      fixture("d"),
+      fixture("c"),
+      fixture("b"),
+      fixture("a"),
+      fixture("z", "VICTAS", { control: 1, spin: 1 }),
+    ];
+    const before = structuredClone(catalog);
+    const fixed = { side: "fore", rubberId: "fixed" } as const;
+    const result = suggestOppositeSide(catalog, conditions, fixed);
+    expect(result.status).toBe("ready");
+    if (result.status !== "ready") throw new Error("Expected ready");
+    expect(result.back.id).toBe("a");
+    expect(result.recommendedTopTieCount).toBe(5);
+    expect(result.recommendedAlternatives.map(r => r.id)).toEqual([
+      "b",
+      "e",
+      "c",
+    ]);
+    for (const permutation of [
+      catalog.toReversed(),
+      [...catalog.slice(3), ...catalog.slice(0, 3)],
+    ])
+      expect(suggestOppositeSide(permutation, conditions, fixed)).toEqual(
+        result
+      );
+    expect(catalog).toEqual(before);
+    expect(
+      suggestOppositeSide(
+        catalog,
+        { ...conditions, foreRole: "counter" },
+        fixed
+      )
+    ).toEqual(result);
+    const backFixed = { side: "back", rubberId: "fixed" } as const;
+    expect(
+      suggestOppositeSide(
+        catalog,
+        { ...conditions, backRole: "spin" },
+        backFixed
+      )
+    ).toEqual(suggestOppositeSide(catalog, conditions, backFixed));
+  });
+
+  it("反対面の役割・経験・予算で候補順位が変わる", () => {
+    const catalog = [
+      fixture("fixed"),
+      fixture("spin", "Butterfly", {
+        spin: 5,
+        speed: 1,
+        control: 1,
+        styles: ["spin"],
+        price: 8000,
+      }),
+      fixture("control", "Nittaku", {
+        spin: 1,
+        speed: 1,
+        control: 5,
+        styles: ["control", "beginner"],
+      }),
+    ];
+    const fixed = { side: "back", rubberId: "fixed" } as const;
+    const spin = suggestOppositeSide(
+      catalog,
+      { ...conditions, foreRole: "spin", level: "middle", budget: "standard" },
+      fixed
+    );
+    const control = suggestOppositeSide(
+      catalog,
+      { ...conditions, foreRole: "control", budget: "standard" },
+      fixed
+    );
+    const limited = suggestOppositeSide(
+      catalog,
+      { ...conditions, foreRole: "spin", budget: "easy" },
+      fixed
+    );
+    expect(spin.status === "ready" && spin.fore.id).toBe("spin");
+    expect(control.status === "ready" && control.fore.id).toBe("control");
+    expect(limited.status === "ready" && limited.fore.id).toBe("control");
+  });
+
+  it("全公開ID・両方向・反対面役割・経験・予算で固定と推薦の不変条件を守る", () => {
+    for (const fixedRubber of rubbers)
+      for (const side of ["fore", "back"] as const)
+        for (const role of ["spin", "counter", "control"] as const)
+          for (const level of ["beginner", "middle"] as const)
+            for (const budget of ["easy", "standard", "free"] as const) {
+              const result = suggestOppositeSide(
+                rubbers,
+                {
+                  foreRole: side === "back" ? role : "spin",
+                  backRole: side === "fore" ? role : "control",
+                  level,
+                  budget,
+                },
+                { side, rubberId: fixedRubber.id }
+              );
+              if (result.status !== "ready" && result.status !== "insufficient")
+                throw new Error("Published ID missing");
+              expect(result.fixedRubber.id).toBe(fixedRubber.id);
+              if (result.status === "insufficient") {
+                expect(
+                  rubbers.filter(
+                    r =>
+                      r.id !== fixedRubber.id &&
+                      !r.discontinued &&
+                      withinBudget(r, budget)
+                  )
+                ).toHaveLength(0);
+                continue;
+              }
+              const selected = result[result.recommendedSide];
+              expect(result[side].id).toBe(fixedRubber.id);
+              expect(selected.id).not.toBe(fixedRubber.id);
+              expect(selected.discontinued).not.toBe(true);
+              expect(withinBudget(selected, budget)).toBe(true);
+              expect(sideScore(selected, role, level)).toBe(
+                Math.max(
+                  ...result.recommendedList.map(r => sideScore(r, role, level))
+                )
+              );
+              expect(result.recommendedAlternatives.length).toBeLessThanOrEqual(
+                3
+              );
+              expect(
+                new Set(result.recommendedAlternatives.map(r => r.id)).size
+              ).toBe(result.recommendedAlternatives.length);
+              expect(
+                result.recommendedAlternatives.some(r =>
+                  [fixedRubber.id, selected.id].includes(r.id)
+                )
+              ).toBe(false);
+            }
   });
 });
 

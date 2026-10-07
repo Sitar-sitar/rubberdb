@@ -4,6 +4,12 @@
 
 - Production: https://sitar-sitar.github.io/rubberdb/
 
+## ラバーの選び方
+
+診断方法は「両面をおすすめ」（初期設定）、「フォアを指定」、「バックを指定」から選べます。片面指定では商品名・ブランドでラバーを検索し、指定した面を保持して反対面だけを役割・経験・予算から推薦します。予算はおすすめする面にだけ適用し、指定品には廃番品や価格未確認の製品も選べます。
+
+セット保存は実際の2枚と診断条件を保存します。片面指定の設定は保存されず、再確認時は保存した2枚を表示して診断方法を両面おすすめに戻します。既存の保存データはそのまま利用できます。
+
 ## Deployment architecture
 
 - `main` push → `.github/workflows/deploy-pages.yml` が typecheck/test/audit(warning)/build/artifact検証を実行し、GitHub Pages (Actions deploy) へ公開
