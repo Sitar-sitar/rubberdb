@@ -306,6 +306,23 @@ const rubbers: RubberEntry[] = [
     officialNote: "ツブ高ラバー",
     verifiedAt: "2026-08-17",
   },
+  {
+    id: "ilius-b",
+    name: "イリウスB",
+    type: "粒高",
+    price: 2970,
+    hardness: "硬",
+    country: "日本",
+    speed: 2,
+    spin: 3,
+    control: 4,
+    styles: ["defense"],
+    suitableFor: "前陣で短いブロックとナックル性プッシュを使いたい人",
+    source: "https://www.butterfly.co.jp/products/detail/00430.html",
+    officialNote:
+      "ツブ高ラバー／アブソーバー スポンジ ドロップ／スポンジ硬度48／厚さ1.3・1.1",
+    verifiedAt: "2026-10-24",
+  },
 ];
 
 export default rubbers;

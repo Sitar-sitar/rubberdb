@@ -3499,6 +3499,90 @@
         ],
         "note": "公式出典を確認したが、この製品の生産終了告知を確認できなかった。ページの掲載継続は現行品の保証とは扱わない。"
       }
+    },
+    {
+      "id": "moristo-sp",
+      "country": {
+        "status": "confirmed",
+        "value": "ドイツ",
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-30"
+        ],
+        "note": "製品単位の公式仕様に記載された原産国・製造国を確認。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.nittaku.com/products/rubbers/post-30"
+        ],
+        "note": "確認した公式製品ページに生産終了告知はなかった。掲載継続を現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "spinpips-d1",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=71"
+        ],
+        "note": "製品単位の公式仕様に記載された原産国・製造国を確認。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=71"
+        ],
+        "note": "確認した公式製品ページに生産終了告知はなかった。掲載継続を現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "spectol-s2",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=69"
+        ],
+        "note": "製品単位の公式仕様に記載された原産国・製造国を確認。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.victas.com/products/detail.html?id=69"
+        ],
+        "note": "確認した公式製品ページに生産終了告知はなかった。掲載継続を現行品の保証とは扱わない。"
+      }
+    },
+    {
+      "id": "ilius-b",
+      "country": {
+        "status": "confirmed",
+        "value": "日本",
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.butterfly.co.jp/products/detail/00430.html"
+        ],
+        "note": "製品単位の公式仕様に記載された原産国・製造国を確認。"
+      },
+      "discontinued": {
+        "status": "unconfirmed",
+        "value": null,
+        "checkedAt": "2026-10-24",
+        "sources": [
+          "https://www.butterfly.co.jp/products/detail/00430.html"
+        ],
+        "note": "確認した公式製品ページに生産終了告知はなかった。掲載継続を現行品の保証とは扱わない。"
+      }
     }
   ]
 }
