@@ -312,6 +312,22 @@ const rubbers: RubberEntry[] = [
     officialNote: "コントロール系／入門者向け",
     verifiedAt: "2026-08-17",
   },
+  {
+    id: "moristo-sp",
+    name: "モリストSP",
+    type: "表ソフト",
+    price: 5720,
+    hardness: "中",
+    country: "ドイツ",
+    speed: 5,
+    spin: 3,
+    control: 4,
+    styles: ["shortPips"],
+    suitableFor: "表ソフトでスピードとナックルを使い分けたい人",
+    source: "https://www.nittaku.com/products/rubbers/post-30",
+    officialNote: "テンション系表ソフト／硬度30.0（ドイツ基準40.0）／縦目",
+    verifiedAt: "2026-10-24",
+  },
 ];
 
 export default rubbers;
