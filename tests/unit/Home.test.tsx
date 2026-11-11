@@ -48,6 +48,69 @@ const oppositeImplementation = vi
   .mocked(recommend.suggestOppositeSide)
   .getMockImplementation()!;
 
+describe("検索カタログ", () => {
+  it("0件から検索語を残してブランドと予算を個別に解除できる", () => {
+    render(<Home />);
+    const query = screen.getByRole("searchbox", { name: "ラバー検索" });
+    fireEvent.change(query, { target: { value: "グレイザー" } });
+    fireEvent.change(screen.getByRole("combobox", { name: "ブランド" }), {
+      target: { value: "Nittaku" },
+    });
+    expect(screen.getByText("検索結果 0件")).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole("button", { name: "ブランド「Nittaku」を外す" })
+    );
+    expect(screen.getByText("検索結果 2件")).toBeTruthy();
+    const budget = screen.getByRole("combobox", { name: "予算（1枚）" });
+    fireEvent.change(budget, { target: { value: "6000" } });
+    expect(screen.getByText("検索結果 0件")).toBeTruthy();
+    fireEvent.change(budget, { target: { value: "8000" } });
+    expect(screen.getByText("検索結果 2件")).toBeTruthy();
+    fireEvent.change(query, { target: { value: "ザイア03" } });
+    expect(screen.getByText("検索結果 0件")).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole("button", { name: "予算「8,000円まで」を外す" })
+    );
+    expect(screen.getByText("検索結果 1件")).toBeTruthy();
+    expect((query as HTMLInputElement).value).toBe("ザイア03");
+  });
+
+  it("別々の検索から2件を比較し、詳細を開いても選択と検索語を保持する", async () => {
+    render(<Home />);
+    const query = screen.getByRole("searchbox", { name: "ラバー検索" });
+    fireEvent.change(query, { target: { value: "ロゼナ" } });
+    fireEvent.click(
+      screen.getByRole("button", { name: "ロゼナを比較対象にする" })
+    );
+    fireEvent.change(query, { target: { value: "グレイザー" } });
+    fireEvent.click(
+      screen.getByRole("button", { name: "グレイザー09Cを比較対象にする" })
+    );
+    const third = screen.getByRole<HTMLButtonElement>("button", {
+      name: "グレイザーを比較対象にする",
+    });
+    expect(third.disabled).toBe(true);
+    const compare = screen.getByRole("button", { name: "2製品を比較" });
+    fireEvent.click(compare);
+    const dialog = screen.getByRole("dialog", { name: "ラバーを比較" });
+    expect(
+      within(dialog).getByRole("row", { name: "硬度 中 硬" })
+    ).toBeTruthy();
+    fireEvent.click(
+      within(dialog).getByRole("button", { name: "ロゼナの詳細" })
+    );
+    const detail = await screen.findByRole("dialog", { name: "ロゼナ" });
+    fireEvent.keyDown(detail, { key: "Escape" });
+    await waitFor(() => expect(document.activeElement).toBe(compare));
+    expect((query as HTMLInputElement).value).toBe("グレイザー");
+    expect(screen.getByText("比較対象 2件")).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole("button", { name: "ロゼナを比較対象から外す" })
+    );
+    expect(third.disabled).toBe(false);
+  });
+});
+
 describe("診断画面の操作と旧保存データ", () => {
   it("5つの質問をラベル付きグループとして公開し選択とフォーカスを維持する", () => {
     render(<Home />);
