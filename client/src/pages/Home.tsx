@@ -362,7 +362,7 @@ export default function Home() {
           </nav>
         </div>
       </header>
-      <main id="top">
+      <main id="top" className="scroll-mt-[68px]">
         <RubberCatalog
           onInspect={rubber =>
             setDetail({ rubber, side: "CATALOG", role: "カタログから確認" })
