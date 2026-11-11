@@ -22,8 +22,8 @@ import {
   rubbers,
   sources,
   type Rubber,
-  type RubberType,
 } from "@/lib/rubberData";
+import RubberCatalog from "@/components/RubberCatalog";
 import { brandTint } from "@/lib/brands";
 import {
   loadFavoriteRubberIds,
@@ -73,10 +73,6 @@ function loadPrunedFavorites() {
   );
 }
 
-const datasetVerifiedAt = rubbers.reduce(
-  (latest, rubber) => (rubber.verifiedAt > latest ? rubber.verifiedAt : latest),
-  rubbers[0].verifiedAt
-);
 function verifiedLabel(verifiedAt: string) {
   return verifiedAt.replaceAll("-", ".");
 }
@@ -121,35 +117,6 @@ export default function Home() {
   const [favoriteSets, setFavoriteSets] = useState<SavedSet[]>(
     () => loadPrunedFavorites().sets
   );
-  const [catalogQuery, setCatalogQuery] = useState("");
-  const [catalogType, setCatalogType] = useState<RubberType | "すべて">(
-    "すべて"
-  );
-  const [catalogBrand, setCatalogBrand] = useState<Rubber["brand"] | "すべて">(
-    "すべて"
-  );
-  const [catalogShowAll, setCatalogShowAll] = useState(false);
-  const modelCount = rubbers.length;
-  const brandCount = new Set(rubbers.map(rubber => rubber.brand)).size;
-  const catalogBrands = useMemo(
-    () => Array.from(new Set(rubbers.map(rubber => rubber.brand))).sort(),
-    []
-  );
-  const catalogResults = useMemo(() => {
-    const normalized = catalogQuery.trim().toLowerCase();
-    return rubbers.filter(rubber => {
-      const searchable =
-        `${rubber.name} ${rubber.brand} ${rubber.type} ${rubber.country ?? ""} ${rubber.officialNote} ${rubber.suitableFor}`.toLowerCase();
-      return (
-        (!normalized || searchable.includes(normalized)) &&
-        (catalogType === "すべて" || rubber.type === catalogType) &&
-        (catalogBrand === "すべて" || rubber.brand === catalogBrand)
-      );
-    });
-  }, [catalogBrand, catalogQuery, catalogType]);
-  const visibleCatalogResults = catalogShowAll
-    ? catalogResults
-    : catalogResults.slice(0, 24);
   const beginnerChinaGuide = useMemo(
     () =>
       rubbers.filter(
@@ -344,20 +311,20 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#f8faf8] text-[#102c4b] selection:bg-[#c7fa42]">
+    <div className="min-h-screen overflow-x-clip bg-[#f8faf8] text-[#102c4b] selection:bg-[#c7fa42]">
       <header className="sticky top-0 z-30 border-b border-white/15 bg-[#082a59]/95 text-white backdrop-blur">
         <div className="mx-auto flex h-[68px] max-w-[1240px] items-center justify-between px-5">
-          <a className="flex items-center gap-3" href="#top">
+          <a className="flex items-center gap-2" href="#top">
             <img
               src={`${import.meta.env.BASE_URL}rubber-index-mark.svg`}
               alt="卓球ラバー図鑑"
               className="h-9 w-9 object-contain"
             />
-            <span className="font-display text-xl font-black tracking-[-.05em]">
+            <span className="font-display text-lg font-black tracking-[-.05em] sm:text-xl">
               RUBBER <span className="text-[#c7fa42]">INDEX</span>
             </span>
           </a>
-          <nav className="hidden items-center gap-5 text-[11px] font-black tracking-[.1em] text-[#d6e6f7] sm:flex">
+          <nav className="hidden items-center gap-5 text-[11px] font-black tracking-[.1em] text-[#d6e6f7] lg:flex">
             <a href="#diagnose" className="hover:text-[#c7fa42]">
               セットを診断
             </a>
@@ -382,100 +349,28 @@ export default function Home() {
               選び方
             </a>
           </nav>
-          <a
-            href="#catalog"
-            className="bg-[#c7fa42] px-3 py-2 text-[10px] font-black tracking-[.08em] text-[#082a59]"
-          >
-            ラバーを探す
-          </a>
+          <nav className="flex items-center gap-3 text-xs font-bold lg:hidden">
+            <a
+              href="#catalog"
+              className="inline-flex min-h-11 items-center text-[#c7fa42]"
+            >
+              ラバーを探す
+            </a>
+            <a href="#favorites" className="inline-flex min-h-11 items-center">
+              お気に入り
+            </a>
+          </nav>
         </div>
       </header>
       <main id="top">
-        <section className="relative overflow-hidden bg-[#082a59] text-white">
-          <div className="absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(255,255,255,.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.09)_1px,transparent_1px)] [background-size:34px_34px]" />
-          <div className="pointer-events-none absolute -right-24 top-10 h-[520px] w-[520px] rounded-full border border-[#c7fa42]/60 shadow-[0_0_0_50px_rgba(199,250,66,.08),0_0_0_100px_rgba(199,250,66,.05)]" />
-          <div className="relative mx-auto grid min-h-[510px] max-w-[1240px] gap-12 px-5 py-16 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
-            <div>
-              <p className="font-mono text-[10px] font-black tracking-[.16em] text-[#c7fa42]">
-                COURT TEMPO / TWO-SIDED SET FINDER /{" "}
-                {verifiedLabel(datasetVerifiedAt)}
-              </p>
-              <h1 className="mt-6 max-w-2xl text-[clamp(3rem,7vw,6.6rem)] font-black leading-[.92] tracking-[-.075em]">
-                フォアとバックに、
-                <br />
-                <span className="text-[#c7fa42]">それぞれの役割</span>を。
-              </h1>
-              <p className="mt-7 max-w-xl text-sm leading-7 text-[#d6e3f2]">
-                利き手、フォアで得意にしたいこと、バックで安定させたいことを選ぶだけ。2枚でどう点を取り、どうラリーを支えるかを考えたセットを提案します。
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="border border-[#c7fa42]/60 bg-[#c7fa42]/10 px-2 py-1 font-mono text-[9px] font-black tracking-[.1em] text-[#c7fa42]">
-                  DOMESTIC MODELS / {modelCount}
-                </span>
-                <span className="border border-white/20 px-2 py-1 font-mono text-[9px] font-black tracking-[.1em] text-[#d6e3f2]">
-                  BRANDS / {brandCount}
-                </span>
-                <span className="border border-white/20 px-2 py-1 font-mono text-[9px] font-black tracking-[.1em] text-[#d6e3f2]">
-                  INVERTED · PIPS · LONG PIPS · ANTI
-                </span>
-              </div>
-              <a
-                href="#diagnose"
-                className="mt-8 inline-flex items-center gap-3 bg-[#c7fa42] px-5 py-3 text-xs font-black tracking-[.08em] text-[#082a59] shadow-[5px_5px_0_#fff] transition hover:-translate-y-0.5 hover:bg-white"
-              >
-                セットの役割を選ぶ <ArrowDownRight size={16} />
-              </a>
-            </div>
-            <div className="relative border border-white/25 bg-[#0c3a74] p-6 shadow-[16px_16px_0_rgba(199,250,66,.18)]">
-              <div className="absolute inset-4 border border-white/15" />
-              <div className="relative">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="font-mono text-[10px] font-black tracking-[.14em] text-[#c7fa42]">
-                      MY SET
-                    </p>
-                    <p className="mt-2 font-black">
-                      両面の役割を、順番に決める。
-                    </p>
-                  </div>
-                  <p className="font-display text-5xl font-black text-[#c7fa42]">
-                    01
-                    <br />
-                    <span className="text-sm text-white">/ 04</span>
-                  </p>
-                </div>
-                <div className="mt-16 grid grid-cols-4 gap-2">
-                  {[
-                    ["01", "利き手"],
-                    ["02", "フォア"],
-                    ["03", "バック"],
-                    ["04", "セット"],
-                  ].map(([no, label], index) => (
-                    <div
-                      className={`border-t-2 pt-2 ${index === 0 ? "border-[#c7fa42]" : "border-white/30"}`}
-                      key={no}
-                    >
-                      <p
-                        className={`font-display text-3xl font-black ${index === 0 ? "text-[#c7fa42]" : "text-white"}`}
-                      >
-                        {no}
-                      </p>
-                      <p className="mt-1 text-[9px] font-bold text-[#c8d8e9]">
-                        {label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-7 border-t border-white/15 pt-3 font-mono text-[9px] font-black tracking-[.1em] text-[#c8d8e9]">
-                  PAIR PRICE / HARDNESS / TYPE / VERIFIED DATE
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <RubberCatalog
+          onInspect={rubber =>
+            setDetail({ rubber, side: "CATALOG", role: "カタログから確認" })
+          }
+        />
         <section
           id="diagnose"
-          className="relative mx-auto max-w-[1240px] overflow-hidden px-5 py-20 [background-image:radial-gradient(rgba(8,42,89,.08)_1px,transparent_1px)] [background-size:18px_18px]"
+          className="relative mx-auto max-w-[1240px] scroll-mt-[68px] overflow-hidden px-5 py-20 [background-image:radial-gradient(rgba(8,42,89,.08)_1px,transparent_1px)] [background-size:18px_18px]"
         >
           <div className="grid gap-7 border-b border-[#d7e0e7] pb-8 md:grid-cols-[1fr_270px] md:items-end">
             <div>
@@ -1061,148 +956,6 @@ export default function Home() {
           )}
         </section>
         <section
-          id="catalog"
-          className="relative overflow-hidden bg-[#f1f6f9] px-5 py-20 [background-image:radial-gradient(rgba(8,42,89,.07)_1px,transparent_1px)] [background-size:18px_18px]"
-        >
-          <div className="relative mx-auto max-w-[1240px]">
-            <div className="grid gap-7 border-b border-[#d7e0e7] pb-8 md:grid-cols-[1fr_290px] md:items-end">
-              <div>
-                <p className="font-mono text-[10px] font-black tracking-[.14em] text-[#1768db]">
-                  DOMESTIC RUBBER CATALOG / ALL MODELS
-                </p>
-                <h2 className="mt-4 text-4xl font-black tracking-[-.055em] md:text-5xl">
-                  気になるラバーを、
-                  <br />
-                  名前から探す。
-                </h2>
-              </div>
-              <p className="text-sm leading-6 text-[#657487]">
-                製品名・ブランド・ラバー種別で、国内流通 {modelCount}{" "}
-                モデルを検索できます。検索結果のすべてで詳細を開けます。
-                原産国は詳細で確認できます。未確認の製品もあります。
-              </p>
-            </div>
-            <div className="mt-7 grid gap-3 md:grid-cols-[1fr_180px_180px]">
-              <label className="flex items-center gap-3 border border-[#bfcfdb] bg-white px-4 py-3">
-                <span className="sr-only">ラバー検索</span>
-                <Search size={18} className="text-[#1768db]" />
-                <input
-                  value={catalogQuery}
-                  onChange={event => {
-                    setCatalogQuery(event.target.value);
-                    setCatalogShowAll(false);
-                  }}
-                  className="w-full bg-transparent text-sm font-bold outline-none placeholder:text-[#8494a3]"
-                  placeholder="例：ファスターク、JOOLA、表ソフト"
-                  type="search"
-                />
-              </label>
-              <select
-                aria-label="ラバーの種別"
-                value={catalogType}
-                onChange={event => {
-                  setCatalogType(event.target.value as RubberType | "すべて");
-                  setCatalogShowAll(false);
-                }}
-                className="border border-[#bfcfdb] bg-white px-3 text-xs font-black text-[#102c4b] outline-none focus:border-[#1768db]"
-              >
-                <option value="すべて">すべての種別</option>
-                <option value="裏ソフト">裏ソフト</option>
-                <option value="表ソフト">表ソフト</option>
-                <option value="粒高">粒高</option>
-                <option value="アンチ">アンチ</option>
-              </select>
-              <select
-                aria-label="ブランド"
-                value={catalogBrand}
-                onChange={event => {
-                  setCatalogBrand(
-                    event.target.value as Rubber["brand"] | "すべて"
-                  );
-                  setCatalogShowAll(false);
-                }}
-                className="border border-[#bfcfdb] bg-white px-3 text-xs font-black text-[#102c4b] outline-none focus:border-[#1768db]"
-              >
-                <option value="すべて">すべてのブランド</option>
-                {catalogBrands.map(item => (
-                  <option value={item} key={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mt-6 flex items-end justify-between gap-4">
-              <div>
-                <p className="font-mono text-[10px] font-black tracking-[.12em] text-[#1768db]">
-                  SEARCH RESULT
-                </p>
-                <p
-                  role="status"
-                  aria-label="カタログの検索結果"
-                  aria-live="polite"
-                  className="mt-1 text-sm text-[#64778b]"
-                >
-                  <strong className="font-display text-4xl font-black text-[#082a59]">
-                    {catalogResults.length}
-                  </strong>{" "}
-                  モデルが見つかりました
-                </p>
-              </div>
-              <p className="max-w-[250px] text-right text-[10px] leading-5 text-[#6e8192]">
-                価格・種別・硬度は詳細画面で確認できます。性能値はサイト内比較用の目安です。
-              </p>
-            </div>
-            {catalogResults.length > 0 ? (
-              <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-                {visibleCatalogResults.map(rubber => (
-                  <CatalogCard
-                    rubber={rubber}
-                    key={rubber.id}
-                    onInspect={() =>
-                      setDetail({
-                        rubber,
-                        side: "CATALOG",
-                        role: "カタログから確認",
-                      })
-                    }
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="mt-6 border border-dashed border-[#b8c7d2] bg-white p-10 text-center">
-                <Search className="mx-auto text-[#6f8293]" size={22} />
-                <p className="mt-4 font-black">
-                  条件に合うラバーがありません。
-                </p>
-                <button
-                  onClick={() => {
-                    setCatalogQuery("");
-                    setCatalogType("すべて");
-                    setCatalogBrand("すべて");
-                  }}
-                  className="mt-3 text-xs font-bold text-[#1768db] underline underline-offset-4"
-                  type="button"
-                >
-                  検索条件をリセット
-                </button>
-              </div>
-            )}
-            {!catalogShowAll &&
-              catalogResults.length > visibleCatalogResults.length && (
-                <div className="mt-7 text-center">
-                  <button
-                    onClick={() => setCatalogShowAll(true)}
-                    className="inline-flex items-center gap-2 bg-[#082a59] px-5 py-3 text-xs font-black text-white hover:bg-[#1768db]"
-                    type="button"
-                  >
-                    残り {catalogResults.length - visibleCatalogResults.length}{" "}
-                    モデルを表示 <ChevronRight size={15} />
-                  </button>
-                </div>
-              )}
-          </div>
-        </section>
-        <section
           id="favorites"
           className="border-y border-[#d7e0e7] bg-white px-5 py-20"
         >
@@ -1772,54 +1525,6 @@ function GuideRubberCard({
         詳細を確認 <ChevronRight size={13} />
       </span>
     </button>
-  );
-}
-function CatalogCard({
-  rubber,
-  onInspect,
-}: {
-  rubber: Rubber;
-  onInspect: () => void;
-}) {
-  return (
-    <article className="border border-[#cbd8e1] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#1768db] hover:shadow-[5px_5px_0_rgba(23,104,219,.1)]">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <span
-            className={`inline-block px-1.5 py-0.5 text-[9px] font-black ${brandTint[rubber.brand]}`}
-          >
-            {rubber.brand}
-          </span>
-          <p className="mt-3 text-base font-black tracking-[-.035em]">
-            {rubber.name}
-          </p>
-          <DiscontinuedNotice rubber={rubber} />
-          <p className="mt-1 text-[10px] text-[#68788a]">
-            {rubber.type} / {rubber.hardness} / 公式確認{" "}
-            {verifiedLabel(rubber.verifiedAt)}
-          </p>
-        </div>
-        <button
-          onClick={onInspect}
-          className="grid h-8 w-8 place-items-center border border-[#082a59] text-[#082a59] transition hover:bg-[#082a59] hover:text-white"
-          aria-label={`${rubber.name}の詳細を開く`}
-          type="button"
-        >
-          <ChevronRight size={15} />
-        </button>
-      </div>
-      <div className="mt-4 flex items-end justify-between border-t border-[#e3e9ee] pt-3">
-        <div>
-          <p className="font-mono text-[9px] font-black tracking-[.08em] text-[#708293]">
-            REFERENCE PRICE
-          </p>
-          <p className="mt-1 text-xs font-black">
-            {formatPriceLabel(rubber.price)}
-          </p>
-        </div>
-        <p className="text-[10px] font-bold text-[#1768db]">詳細を見る</p>
-      </div>
-    </article>
   );
 }
 // Radix Dialog に委ねることで、フォーカストラップ・Esc・閉じたあとの復帰フォーカス・背景の不活性化を実装ミスなく満たす（修正設計書 A11Y-01）。
